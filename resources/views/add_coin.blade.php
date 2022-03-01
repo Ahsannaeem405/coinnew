@@ -61,7 +61,7 @@ Add Coin
                 <div class="form-wrapper mt-5">
 						
 						
-						<form method="POST" class="login-form" action="{{ url('user/coin_save') }}">
+						<form method="POST" class="login-form" action="{{ url('user/coin_save') }}" enctype="multipart/form-data">
                         @csrf
 					    <div class="row">
 					    	<div class="col-md-6">
@@ -105,9 +105,14 @@ Add Coin
 									    padding: 0 25px;
 									    border-radius: 5px;"></textarea> 
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Launch date<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
-								<input required="" type="datetime-local" id="formLaunch" class="form-control t1" name="launch_date">
-					    		
+								<input required="" type="datetime-local" id="formLaunch" class="form-control t1"  name="launch_date">
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Image <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="file"  class="t1" name="image" required>
+
 					    	</div>
+
+
 					    	<div class="col-md-6">
 					    		<h4 class="title" style="float: left;">Coin contracts</h4><br><hr>
 					   
@@ -125,8 +130,7 @@ Add Coin
                                 </select>
                                 <label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Address<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 								    
-								<input type="text" 
-								    class="t1" name="address" required>
+								<input type="text"  class="t1" name="address" required>
 							    
 								
 								<!-- <input type="text" placeholder="Ethereum contract address" 

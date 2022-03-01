@@ -28,12 +28,47 @@ class userController extends Controller
     public function coin_save(Request $request)
     {
 
+      $coinSave=new add_coin();
+      $coinSave->name= $request->name;
+      $coinSave->sym= $request->sym;
+      $coinSave->des= $request->des;
+      $coinSave->checkbox= $request->checkbox;
+      $coinSave->telegram= $request->telegram;
+      $coinSave->web= $request->web;
+      $coinSave->address_name= $request->address_name;
+      $coinSave->address= $request->address;
+      $coinSave->other= $request->other;
+      $coinSave->e_c_address= $request->e_c_address;
+      $coinSave->logo_link= $request->logo_link;
+      $coinSave->act_price= $request->act_price;
+      $coinSave->mark_cap= $request->mark_cap;
+      $coinSave->launch_date= $request->launch_date;
+      $coinSave->sol_address= $request->sol_address;
+      $coinSave->facebook= $request->facebook;
+      $coinSave->twi= $request->twi;
+      $coinSave->rec= $request->rec;
+      $coinSave->youtube= $request->youtube;
+      $coinSave->insta= $request->insta;
+      $coinSave->vote= 0;
+      $coinSave->devote= 0;
+      $coinSave->chart= $request->chart;
 
-    $coin= $request->only(['name', 'sym', 'des','checkbox', 'telegram', 'web','address_name',  'address', 'other', 'e_c_address',
-                'logo_link', 'act_price', 'mark_cap', 'launch_date','sol_address','facebook','twi','rec','youtube','insta','chart']);
-    $coin['created_by']=Auth::user()->id;
+      if(isset($request->image))
+        {
+        $image=$request->file('image');
+        $imageName = $image->getClientOriginalName();
+        $coinSave->image=$imageName;
+        $path=$image->move(public_path('images'),$imageName);
+           
+        }
+        $coinSave->save();
 
-    $user =add_coin::create($coin);
+   //  $coin= $request->only(['name', 'sym', 'des','checkbox', 'telegram', 'web','address_name',  'address', 'other', 'e_c_address',
+   //              'logo_link', 'act_price', 'mark_cap', 'launch_date','sol_address','facebook','twi','rec','youtube','insta','chart']);
+   //  $coin['created_by']=Auth::user()->id;
+
+   //  $user =add_coin::create($coin);
+
     return back()->with('success', 'Your Coin is Successfully Saved.');
 
     }
@@ -60,21 +95,23 @@ class userController extends Controller
 
        $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->sum('devote');
        $data=add_coin::find($id);
-       if( $userVote >0)
+      // dd($userVote);
+       if( $userVote > 0)
        {
-        // dd(11);
-         $voty=DB::Table('coin_votes')->where('user_id',Session::get('id'))->where('coin_id',$id)->delete();
-         $update_vote=$get_vote_val-1;
-         $data->devote=$update_vote;
-         $update_vote=$get_vote+1;
-         $data->vote=$update_vote;
-       }else{
-         // dd(33);
-         $update_vote=$get_vote+1;
-         $data->vote=$update_vote;
-       }
+         //dd($data->devote);
 
+         
+         $voty=DB::Table('coin_votes')->where('user_id',Session::get('id'))->where('coin_id',$id)->delete();
+         $data->devote=($data->devote - 1);
+         $data->vote=($data->vote + 1);
+       }else{
+         //dd(5678);
+         $data->vote=($data->vote + 1);
+
+           
+       }
        $data->save();
+    
        if(!Auth::user() And !(Session::has('id')))
        {
             $use= new User;
@@ -132,22 +169,20 @@ class userController extends Controller
        $get_vote_val=add_coin::where('id',$id)->value('vote');
 
        $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->sum('vote');
-     
+       //dd($get_vote_val);
        $data=add_coin::find($id);
        if($userVote > 0)
        {
-         //dd(1122);
-         $voty=DB::Table('coin_votes')->where('user_id',Session::get('id'))->where('coin_id',$id)->delete();
-         $update_vote=$get_vote_val-1;
-         $data->vote=$update_vote;
-         $update_vote=$get_vote+1;
-         $data->devote=$update_vote;
+        // dd(1122);
+        $voty=DB::Table('coin_votes')->where('user_id',Session::get('id'))->where('coin_id',$id)->delete();
+         $data->vote=($data->vote - 1);
+         $data->devote=($data->devote + 1);
        }else{
-         // dd(1133);
-         $update_vote=$get_vote+1;
-         $data->devote=$update_vote;
-       }
+         //dd(5678);
+         $data->devote=($data->devote + 1);
 
+         
+       }
        $data->save();
       
        if(!Auth::user() And !(Session::has('id')))
@@ -206,8 +241,7 @@ class userController extends Controller
        $get_vote=add_coin::where('id',$id)->value('devote');
        $data=add_coin::find($id);
   
-
-         $update_vote=$get_vote - 1;
+         $update_vote=$get_vote - 1;         
          $data->devote=$update_vote;
        
 

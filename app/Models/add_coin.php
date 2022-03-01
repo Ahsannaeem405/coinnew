@@ -25,7 +25,7 @@ class add_coin extends Model
         'mark_cap', 
         'launch_date',
         'created_by',
-        'sol_address','facebook','twi','rec','youtube','insta','chart',
+        'sol_address','facebook','twi','rec','youtube','insta','chart','image',
         
     ];
     public function coin_coment(){

@@ -168,7 +168,10 @@ Route::get('auth/facebook/callback',[App\Http\Controllers\Auth\FacebookControlle
 
 
  Route::any('/coin_edit/{id}',[App\Http\Controllers\userController::class, 'coin_edit']);
-    Route::post('/update_coin/{id}',[App\Http\Controllers\userController::class, 'update_coin']);
+    Route::any('/update_coin/{id}',[App\Http\Controllers\userController::class, 'update_coin']);
+    Route::any('/coinUpdate/{id}',[App\Http\Controllers\AdminController::class, 'coinUpdate']);
+
+
  Route::post('/save_img',[App\Http\Controllers\userController::class, 'save_img']);
  Route::get('/img_del/{id}',[App\Http\Controllers\userController::class, 'img_del']);
 

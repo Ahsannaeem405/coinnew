@@ -161,10 +161,11 @@ if it's not present, don't show loader */
     <link rel="stylesheet" href="{{asset('style.css')}}">
  
     <div class="se-pre-con"></div>
-    @php $images=App\Models\slider_img::take('1')->orderBy('id', 'DESC')->get();
-    $images2=App\Models\slider_img::orderBy('id', 'DESC')->get();
+    @php
+    // $images=App\Models\add_coin::whereNotNull('permote')->whereNotNull('approve')->take(1)->orderBy('id', 'DESC')->get(); 
+    $images=App\Models\slider_img::orderBy('id', 'DESC')->get();
     $images3=App\Models\ban_slider_img::orderBy('id', 'DESC')->get();
-
+    $images2=App\Models\add_coin::whereNotNull('permote')->whereNotNull('approve')->get();   
 
     @endphp
     @if(Session::has('success'))
@@ -191,12 +192,21 @@ if it's not present, don't show loader */
     <div class="row mx-auto my-auto" style="margin-top:1%!important;">
         <div id="myCarousel" class="carousel slide container-fluid" data-ride="carousel">
             <div class="carousel-inner w-100" role="listbox">
-
-                @foreach($images as $row_img)
+                @php
+                    $one=0;
+                @endphp
+                @foreach($images2 as $row_img)
+                @php
+                  $one++;
+                if($one > 1)
+                {	
+                    break;
+                }
+                @endphp
                     <div class="carousel-item active">
                         <div class="col-lg-4 col-md-6 ">
                             <a href="{{$row_img->url}}">
-                                <img class="img-fluid rounded" src="{{url('upload/images/'.$row_img->file)}}"></a>
+                                <img class="img-fluid rounded" src="{{url('images/'.$row_img->image)}}"></a>
                         </div>
                     </div>
                 @endforeach
@@ -205,7 +215,7 @@ if it's not present, don't show loader */
                     <div class="carousel-item">
                         <div class="col-lg-4 col-md-6">
                             <a href="{{$images2[$i]->url}}">
-                                <img class="img-fluid rounded" src="{{url('upload/images/'.$images2[$i]->file)}}"></a>
+                                <img class="img-fluid rounded" src="{{url('images/'.$images2[$i]->image)}}"></a>
                         </div>
                     </div>
                 @endfor
@@ -1038,15 +1048,29 @@ if it's not present, don't show loader */
                                     @else
                                         <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_vo1 col-6" abc="{{$row_wk->id}}" type="button">🚀{{$row_wk->vote}}</button></td>
                                     @endif
+                                    @if($check3==0)
+
+                                    <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-danger devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    @else
+                                    <td class="un_devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-danger un_devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    @endif
                                 @else
                                     @php
                                         $see_check=App\Models\coin_vote::where('coin_id',$row_wk->id)->where('user_id',$get_ses)->count();
+                                     
                                     @endphp
                                      @if($see_check==0)
 
-                                    <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-primary devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-6" abc="{{$row_wk->id}}" type="button">{{$row_wk->vote}}</button></td>
                                     @else
-                                    <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_vo1 col-6" abc="{{$row_wk->id}}" type="button">🚀{{$row_wk->vote}}</button></td>
+                                    @endif   
+
+                                     @if($see_check==0)
+
+                                    <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-danger devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    @else
+                                    <td class="un_devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-danger un_devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
                                     @endif
 
 
@@ -1140,25 +1164,25 @@ if it's not present, don't show loader */
                                         <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_vo1" abc="{{$row_wk->id}}" type="button">🚀{{$row_wk->vote}}</button></td>
                                     @endif
                                              {{--devote start--}}
-                                             @if($check==0)
+                                    @if($check3==0)
                                         <td style="text-align:center;" class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_wk->id}}" type="button"><span>{{$row_wk->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_wk->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_wk->id}}" type="button">🚀<span>{{$row_wk->devote}}</span></button></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_wk->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_wk->id}}" type="button"><span>{{$row_wk->devote}}</span></button></td>
                                     @endif 
                                 @else
                                     @php
                                         $see_check=App\Models\coin_vote::where('coin_id',$row_wk->id)->where('user_id',$get_ses)->count();
                                     @endphp
-                                    @if($see_check==0)
+                                  @if($see_check==0)
 
-                                        <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-primary devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_wk->id}}" type="button">{{$row_wk->vote}}</button></td>
                                     @else
-                                        <td class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_devote col-6" devote="{{$row_wk->id}}" type="button">{{$row_wk->devote}}</button></td>
+                                    <td class="vo1{{$row_wk->id}}"><button class="sbn btn btn-sm btn-primary un_vo1" abc="{{$row_wk->id}}" type="button">{{$row_wk->vote}}</button></td>
                                     @endif
                                     @if($see_check==0)
                                     <td style="text-align:center;" class="devote{{$row_wk->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_wk->id}}" type="button"><span>{{$row_wk->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_wk->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_wk->id}}" type="button">🚀<span>{{$row_wk->devote}}</span></button></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_wk->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_wk->id}}" type="button"><span>{{$row_wk->devote}}</span></button></td>
                                     @endif 
 
                                 @endif
@@ -1252,8 +1276,15 @@ if it's not present, don't show loader */
                  
                         op+='<button class="btn btn-sm sbn btn-primary un_vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
                         $('.vo1'+ids).append(op);
-                     
+                        if(data.dat > 0)
+                        {
+                            $('.devote'+ids).empty();
 
+                        var d =" ";
+                        d+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
+                        $('.devote'+ids).append(d);
+                        //alert('vote ='+data.devote);
+                        }
 
                     },
                 });
@@ -1284,8 +1315,12 @@ if it's not present, don't show loader */
                         var op =" ";
                         op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
                         $('.vo1'+ids).append(op);
-                        $('.vo1'+ids).text(data.devote);
-
+                        // $('.devote'+ids).empty();
+                        // var d =" ";
+                        // d+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.devote+'</button>';
+                        // $('.devote'+ids).append(d);
+                        // $('.vo1'+ids).text(data.devote);
+                        // alert(data.devote);
 
                     },
                 });
@@ -1317,8 +1352,17 @@ if it's not present, don't show loader */
                         var op =" ";
                         op+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
                         $('.devote'+ids).append(op);
-                        $('.un_vo1').text(data.vote);
+                        if(data.dat > 0)
+                        {
+                        $('.vo1'+ids).empty();
+                        var v =" ";
+                        v+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.vote+'</button>';
+                        $('.vo1'+ids).append(v);
+                        //alert('devote ='+data.vote);
 
+                    //     $('.devote'+ids).text(data.vote);
+                    //    alert(data.vote);
+                        }
 
                     },
                 });
