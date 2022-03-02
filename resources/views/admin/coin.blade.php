@@ -248,7 +248,6 @@ Add Coin
                                             <th>Logo</th>
                                             <th>Image Banner</th>
                                             <th class="border-top-0">Name</th>
-                                            
                                             <th class="border-top-0">launch Date</th>
                                             <th class="border-top-0">Price</th>
                                             <th>vote</th>
@@ -270,7 +269,6 @@ Add Coin
                                             <td><img src="{{asset('images')}}/{{$row->image}}" style="height: 40px; width: 40px;"></td>
 
                                             <td class="txt-oflo">{{$row->name}}</td>
-                                            <td><img src="{{$row->logo_link}}" style="height: 40px; width: 40px;"></td>
 
                                             <td class="txt-oflo">{{$row->launch_date}}</td>
                                             <td><span class="text-success">${{$row->mark_cap}}</span></td>
