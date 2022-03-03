@@ -145,6 +145,7 @@
                                             <!-- /.header-widget -->
                                         </ul> <!-- /.navbar-nav -->
                                     </div> 
+                                    
                                 </div> <!-- /.bsnav -->
                                 <!-- <div id="login-md"><a href="{{url('log_in')}}">Log in</a></div> -->
                             </div>
