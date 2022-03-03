@@ -108,11 +108,8 @@
                                     <div class="collapse navbar-collapse py-2">
                                         <ul class="navbar-nav mr-auto ">
                                             <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/token')}}" >Token</a></li>
-                                        
                                             <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/topgainer')}}">Topgainer</a></li>
-                                            
                                             <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/promote')}}">Promoted</a></li>
-                                            
                                             <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/new')}}">New</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }}
                                             nav-link  border-0 " href="{{url('/audit')}}">Audit</a></li>
@@ -123,7 +120,7 @@
                                             <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('contact_us')}}">Contact Us</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }}
-                                            nav-link  border-0 " href="{{url('/')}}">Telegram</a></li>
+                                            nav-link  border-0 " href="{{url('/mytelegram')}}">Telegram</a></li>
                                             <!-- @if(Auth::user() and Auth::user()->role=='admin')
                                             <li class="nav-item"><a class="nav-link {{ (request()->is('admins/index')) ? 'active' : '' }}" href="{{url('admins/index')}}">Admin Home</a></li>
                                             @endif -->
@@ -167,15 +164,16 @@
                                         <input type="text" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
-                                    <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/')}}" >Token</a></li>   
-                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">Topgainer</a></li> 
-                                    <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">Promoted</a></li>  
-                                    <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/')}}">New</a></li>
-                                    <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/')}}" >KYC</a></li>
+                                    <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/token')}}"  >Token</a></li>   
+                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/topgainer')}}">Topgainer</a></li> 
+                                    <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/promote')}}">Promoted</a></li>  
+                                    <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/new')}}">New</a></li>
+                                    <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/audit')}}" >Audit</a></li>
+                                    <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">BuyBol</a></li>       
-                                    <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">FAQ</a></li>
-                                    <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('contact_us')}}">Contact Us</a></li>
-                                    <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('')}}">Telegram</a></li>
+                                    <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
+                                    <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link"  href="{{url('contact_us')}}">Contact Us</a></li>
+                                    <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('/mytelegram')}}">Telegram</a></li>
 
                                     @if(Auth::user() and Auth::user()->role=='admin')
                                             <li class="nav-item"><a class="nav-link {{ (request()->is('admins/index')) ? 'active' : '' }}" href="{{url('admins/index')}}">Admin Home</a></li>

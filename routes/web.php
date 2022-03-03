@@ -66,6 +66,10 @@ Route::get('/FAQ', function () {
     return view('faq');
 });
 
+Route::get('/mytelegram', function () {
+    return view('mytelegram');
+});
+
 
 Route::get('/contact_us', [App\Http\Controllers\WebsiteController::class, 'promote']);
 Route::get('/promote', [App\Http\Controllers\WebsiteController::class, 'promote2']);

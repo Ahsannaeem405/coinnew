@@ -133,8 +133,9 @@ if it's not present, don't show loader */
     $images=App\Models\slider_img::orderBy('id', 'DESC')->get();
     $images3=App\Models\ban_slider_img::orderBy('id', 'DESC')->get();
     $images2=App\Models\add_coin::whereNotNull('permote')->whereNotNull('approve')->get();   
-
+  
     @endphp
+
     @if(Session::has('success'))
         <div class="alert alert-success" style="width:100%;">
             {{ Session::get('success') }}
@@ -194,7 +195,7 @@ if it's not present, don't show loader */
                                 
                                 <div class="col-12 slider-div py-4">
                                     <div class="owl-carousel owl-carousel1 owl-theme">
-                                            @foreach($images2 as $row_img)
+                                            @foreach($images as $row_img)
                                                     <div class="item text-center mx-auto">  
                                                             <a href="{{$row_img->url}}" class="">
                                                                 <img class="img-fluid rounded " src="{{url('upload/images/'.$row_img->file)}}"></a>        

@@ -118,7 +118,7 @@ Audit
             <div class="content content__accordion">
                 <div class="accordion">
                 <div class="accordion__wrapper">
-                    <div class="accordion__item">
+                    <div class="accordion__item accordion__item--active">
                     <div class="accordion__item--summary">
                         <div class="accordion__item-icon">
                         <i class="fas fa-fw fa-futbol"></i>

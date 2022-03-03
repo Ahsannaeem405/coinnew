@@ -197,7 +197,6 @@ New
                 $(".set5").hide();
                 document.getElementById("promoted_2").style.display = "inline-table";
 
-
             });
           </script>
 

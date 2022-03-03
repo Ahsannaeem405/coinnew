@@ -216,6 +216,12 @@ body .theme-button-two:before,.download-section ul li a,.Cryonik-footer a,.nav-t
 @media screen and (max-width:768px){
   .logo2{
     width: 180px;
+    margin: 119px auto 0 auto;
+  }
+}
+@media screen and (max-width:425px){
+  .logo2{
+    width: 180px;
     margin: 92px auto 0 auto;
   }
 }
@@ -1341,4 +1347,20 @@ table.mytable td {
     font-size: 14px;
     font-weight: 400;
   }
+}
+/* My telegram */
+.tele-card{
+  text-align: center;
+}
+.card-title{
+  font-size: 22px;
+  font-weight: 500;
+}
+.card-details span{
+  font-size: 18px;
+  color: #afb4c0;
+}
+.card-disc{
+  font-size: 16px;
+  color: white;
 }
