@@ -43,7 +43,7 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #1b3815
+    color: #fff;
 }
 
 h1,
@@ -158,7 +158,7 @@ iframe {
 .txt3 {
     font-family: Ubuntu-Bold;
     font-size: 15px;
-    color: #9488f0;
+    color: #F3D57E;
     line-height: 1.4;
     text-transform: uppercase
 }
@@ -181,19 +181,15 @@ iframe {
     align-items: center;
     padding: 15px;
     position: relative;
-    background-color:#d3d2dd;
+    background-color:#000;
 }
 
 .wrap-login100 {
     width: 500px;
-    background: #c1c2c6;
+    background: #383737;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
-    -moz-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
-    -webkit-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
-    -o-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
-    -ms-box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1)
+    border: 8px solid #FFCB3B;
 }
 
 .login100-form {
@@ -287,7 +283,7 @@ iframe {
     padding: 0 20px;
     width: 100%;
     height: 50px;
-    background-color:#232a32;
+    background-color: #F7D26C;
 
     border-radius: 25px;
     font-family: Ubuntu-Bold;
@@ -302,7 +298,8 @@ iframe {
 }
 
 .login100-form-btn:hover {
-    background-color: #9488f0
+    background-color: #BE8D00;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .validate-input {

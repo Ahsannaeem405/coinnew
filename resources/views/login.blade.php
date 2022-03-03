@@ -4,11 +4,7 @@ Log in
 @endsection 
 
 @section('body_content')
-<style type="text/css">
-    body{
-        background-color:#2E2C40;
-    }
-</style>
+
 <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 
     <link rel="stylesheet" type="text/css" href="{{asset('login_sr/vendor/bootstrap/css/bootstrap.min.css')}}">

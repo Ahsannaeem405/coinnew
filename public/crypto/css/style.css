@@ -34,17 +34,20 @@
 
 /*______________________ Global Perfix ___________________*/
 body {
- font-family:"Avenir LT W01_65 Medium1475532";
- color:#8890a3;
+  font-family: 'Arimo', sans-serif;
  font-size: 18px;
  position: relative;
+ background-color: #000;
 }
 .main-page-wrapper {overflow-x:hidden;}
 h1,h2,h3,h4,h5,h6,p,ul { margin:0;padding: 0;}
-h1,h2,h3,h4,h5,h6 {color: #101530;}
+h1,h2,h3,h4,h5,h6 {color: #fff;}
 h1 {font-family: 'Avenir-Black'; font-size: 50px; line-height: 68px;}
+@media screen and (max-width:425px){
+  h1 {font-family: 'Avenir-Black'; font-size: 25px;}
+}
 h2 {
-  font-family: 'Avenir-Black';
+  font-family: 'Arimo', sans-serif;
   font-size: 44px; 
   line-height: 62px; 
 }
@@ -170,14 +173,52 @@ body .theme-button-two:before,.download-section ul li a,.Cryonik-footer a,.nav-t
 .contact-info-box .single-box p a,.address-wrapper .single-block p a,.how-it-works .single-block .text .number,.Cryonik-header .navbar-nav .nav-link.active,
 .legal-information-section .information-nav ul li a:hover,.legal-information-section .information-nav ul li.active a,.help-center-header ul li a,.fund-facts .download,
 .how-afiliate-works ul li .num  {
-  color: white;
-  background-color: #9488f0;
+  /* color: white;
+  background-color: #9488f0; */
 }
 .grdn-bg,.investment-calculation .total-output .return-output,body .theme-button-two:before {
   background: linear-gradient(120deg, #68e4f1 0%, #66a6ff 100%);
 }
 /*_______________________ Cryonik Header _______________________*/
-.Cryonik-header {position: relative;padding:35px 0 45px 0;}
+.Cryonik-header {
+  position: relative;
+  background-color: #000;
+  color: white;
+}
+.logo{
+  position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    border-radius: 146px;
+    border: 10px solid #000;
+    width: 170px;
+    height: 170px;
+    background: white;
+    top: 10px;
+}
+@media screen and (max-width:990px){
+  .logo {
+    width: 110px;
+    height: 110px;
+    z-index: 1;
+}
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+}
+.logo2{
+  text-align: center;
+  margin-top: 45px;
+  padding-bottom: 15px;
+}
+@media screen and (max-width:768px){
+  .logo2{
+    width: 180px;
+    margin: 92px auto 0 auto;
+  }
+}
 .Cryonik-header .main-header-wrapper {position: relative;}
 .Cryonik-header .main-header-wrapper .logo {
   position: absolute;
@@ -194,7 +235,11 @@ body .theme-button-two:before,.download-section ul li a,.Cryonik-footer a,.nav-t
   background-color: #232a32;
   color:white!important; 
   border: 1px solid #9488f0;
-
+}
+.navbar-toggler {
+  position: absolute;
+  top: 0px;
+  right: 5%;
 }
 .navbar-nav .btn-info:hover{
  
@@ -206,19 +251,22 @@ body .theme-button-two:before,.download-section ul li a,.Cryonik-footer a,.nav-t
 
 }
 .Cryonik-header .navbar-nav .nav-link:hover {
-background-color:#9488f0;
+background-color:#e2ab10;
 color: white;
 }
 .Cryonik-header .navbar-nav .nav-link {
- 
   line-height: 51px;
-  font-size: 16px;
+  font-size: 19px;
   color: #000;
-
-  margin-left: .5rem;
-    
-    padding: 0 2rem;
+  font-weight: 600;
+    padding: 0 0.6rem;
+    border-right: 2px solid #e2ab10;
+    text-shadow: 0px 1px #fff;
 }
+.Cryonik-header .navbar-nav .nav-item:last-child .nav-link{
+  border-right: 2px solid none;
+}
+
 .Cryonik-header .navbar-nav .header-widget>ul>li {
   float: left;
 }
@@ -236,7 +284,9 @@ color: white;
   border-radius: 25px;
 }
 .Cryonik-header .navbar-nav .dc>li {float: none;display: inline-block;}
+.header-search{
 
+}
 #login-md a {
   line-height: 51px;
   font-size: 16px;
@@ -308,10 +358,23 @@ body .chosen-container .chosen-results li.highlighted {background:transparent;}
 .navbar-toggler.toggler-spring .navbar-toggler-icon::after {top:18px;}
 .navbar-toggler.toggler-spring.active .navbar-toggler-icon::before {width: 25px;}
 .bsnav-mobile .navbar {
-  
-  padding-top:25px;
+  background-color: #000;
   box-shadow: 0px 10px 20.16px 0.84px rgba(185, 184, 184, 0.17);
-  transform: translate3d(330px,0,0)
+  transform: translate3d(330px,0,0);
+  padding: 2rem 0rem 3rem 0rem !important;
+  border: 1px solid #e2ab10;
+  border-radius: 5px 0px 0px 5px !important;
+}
+.bsnav-mobile .navbar-nav{
+  
+}
+.bsnav-mobile .navbar-nav .nav-link {
+  color: #fff;
+  font-weight: 600;
+  padding: 0px 0.75rem!important;
+  border-right: 2px solid #e2ab10;
+  margin-top: 2% !important;
+  text-align: end !important;
 }
 .navbar-toggler.active {position: fixed;top:20px;right: 30px;}
 /*_______________________ Cryonik Main Banner _______________________*/
@@ -685,8 +748,8 @@ body .chosen-container .chosen-results li.highlighted {background:transparent;}
 }
 .plan-tabs-wrap .nav-tabs .nav-item.show .nav-link,
 .plan-tabs-wrap .nav-tabs .nav-link.active {
-  color: #66a6ff;
-  border-bottom-color: #66a6ff;
+  color: White;
+  background-color: #e2ab10;
 }
 
 .plan-tabs-wrap #vip {background: linear-gradient( 90deg, rgb(214,177,133) 25%, rgb(180,144,94) 100%);}
@@ -776,6 +839,23 @@ body .chosen-container .chosen-results li.highlighted {background:transparent;}
 }
 .theme-inner-banner p {line-height: 22px;padding: 0 100px;}
 /*______________________ Contact Info Box ____________________*/
+.theme-input{
+  width: 100%;
+	height: 55px;
+	border: 1px solid #edeef1;
+	padding: 0 25px;
+	border-radius: 5px;
+  margin-top:3%;
+}
+@media screen and (max-width:425px){
+  .theme-input{
+    height: 35px;
+  }
+}
+.contact-div{
+  border: 8px solid #e2ab10;
+  background-color: #616161;
+}
 .contact-info-box .single-box {
   border:1px solid #dee0e7;
   text-align: center;
@@ -1046,3 +1126,219 @@ body .chosen-container .chosen-results li.highlighted {background:transparent;}
 .affiliate-features .single-feature {padding-bottom: 88px;}
 .affiliate-features .row {margin: 0 -30px;}
 .affiliate-features .row [class*="col-"] {padding: 0 30px;}
+
+/* Top bar */
+.header-search img{
+  width: 35px;
+  height: auto;
+}
+.header-search .form-control{
+  width: 250px;
+  background-color: #8a8989;
+  border: none;
+  flex: none;
+  border-radius: 0px;
+}
+.header-search .form-control:hover{
+  box-shadow: none;
+  outline: none;
+}
+.auth a{
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Arimo', sans-serif;
+
+}
+.auth .nav-link{
+  padding: 0px 10px;
+  margin: 10px 0px;
+}
+.auth .nav-link:nth-child(2){
+  border-left: 2px solid white;
+}
+.navbar-collapse{
+  background: rgb(255,204,60);
+  background: linear-gradient(90deg, rgba(255,204,60,1) 20%, rgba(242,214,135,1) 50%, rgba(255,204,60,1) 100%);
+  color: white;
+  font-family: 'Arimo', sans-serif;
+}
+/* promoted Cash */
+.promoted-cash{
+  border: 8px solid #ffcb3b;
+  color: #fff;
+  margin-top: 30px;
+}
+.promoted-cash h3{
+  background-color: #000;
+  color: white;
+  position: absolute;
+  top: -29px;
+  padding: 0px 8px;
+  font-size: 24px;
+}
+.promoted-gig img{
+  width: 140px;
+  height: 140px;
+  border-radius: 132px;
+  object-fit: cover;
+}
+.promoted-div1{
+  background-color: #383737;
+}
+.slider-div{
+  border-top: 6px solid #fecc3c;
+  background-color: #323131;
+}
+.owl-carousel1{
+  position: relative;
+}
+.owl-carousel1 .item{
+  width: 80%;
+  height: auto;
+}
+@media screen and (max-width:768px){
+  .owl-carousel1 .item{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .owl-carousel1 .owl-nav{
+    display: none !important;
+  }
+}
+.owl-carousel1 .item .img-fluid{
+  object-fit: contain;
+}
+.owl-theme .owl-nav{
+  position: absolute;
+  margin-top: 0px !important;
+  top: 50%;
+  transform: translateY(-55%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 80px;
+  text-shadow: 0px 2px #000;
+}
+.owl-theme .owl-nav [class*=owl-]:hover{
+  background-color: transparent !important;
+}
+.owl-carousel2 .owl-item img{
+  width: 240px !important;
+  height: 240px;
+  border-radius: 170px;
+  object-fit: cover;
+}
+
+/* Promoted table */
+table.mytable{
+  padding: 8px;
+  background-color: #464645;
+  border: 8px solid #fecc3c;
+  position: relative;
+}
+.table-heading{
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  background-color: #000 !important;
+  padding: 0px 20px !important;
+  font-size: 24px !important;
+}
+table.mytable th {
+  background-color: #616161;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  border-right: 2px solid #323131;
+  padding: 8px 5px;
+  color: #fff;
+}
+table.mytable th:nth-child(2) {
+  text-align: start;
+}
+table.mytable td{
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  border-right: 2px solid #323131;
+  padding: 0px 8px;
+  color: #fff;
+}
+table.mytable td a{
+  text-align: center;
+  color: white;
+}
+table.mytable td a.name{
+  display: flex;
+    align-items: center;
+}
+table.mytable td:nth-child(2){
+  text-align: start;
+}
+table.mytable tbody tr:nth-child(2n+1){
+background-color: #252525;
+padding: 10px 0px;
+}
+table.mytable tbody tr:nth-child(2n+1) td{
+  border-width: 2px 2px 2px 0px;
+  border-color: #000;
+  border-style: solid;
+  margin: 10px 0px;
+}
+.vote-btn{
+  border: 1px solid #fecc3c;
+  padding: 5px 10px;
+  background: transparent;
+  color: #fecc3c;
+  border-radius: 5px;
+  margin:auto;
+}
+.mytable img{
+  display: block;
+}
+
+@media screen and (max-width:768px){
+  .mytable img{
+    display: none;
+  }
+  table.mytable{
+    padding: 4px;
+    background-color: #616161;
+    border: 4px solid #fecc3c;
+    position: relative;
+  }
+  table.mytable th {
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    border-right: 2px solid #323131;
+    padding: 4px 7px;
+    color: #fff;
+}
+table.mytable td {
+  font-size: 17px;
+  padding: 7px 8px;
+}
+.table-heading{
+ 
+  top: -40px;
+  left: 20px;
+}
+
+
+}
+/* Footer */
+.footer-text{
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px 0px 10px 0px;
+}
+@media screen and (max-width:425px){
+  .footer-text{
+    font-size: 14px;
+    font-weight: 400;
+  }
+}

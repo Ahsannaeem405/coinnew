@@ -21,4 +21,10 @@ class WebsiteController extends Controller
 
         return view('layouts.main', compact('footer'));
     }
+    public function promote2()
+    {
+        $promote = Promote::find(1);
+
+        return view('permote', compact('promote'));
+    }
 }

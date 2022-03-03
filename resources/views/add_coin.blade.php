@@ -32,6 +32,9 @@ Add Coin
 	textarea:hover{
 		border:1px solid white;
 	}
+	.add-btn{
+
+	}
 
 </style>
 
@@ -45,9 +48,10 @@ Add Coin
       @endphp
   </div>
 @endif
-	<div class="row mb-5 mt5" style="background-color: #c1c2c6;
+	<div class="row mb-5 mt5" style="background-color: #323131;
     padding: 3rem;
     border-radius: 2rem;
+	border: 8px solid #FECD41;
     color:white;
     margin-top: 4%;">
 		
@@ -170,10 +174,10 @@ Add Coin
 							
 							
 							
-							<button class="btn btn-info t2 t1" 
+							<button class="btn btn-info t2 t1"  class="add-btn"
 							style="width: 250px;
-							        border: 1px solid #9488f0;
-								    background-color:#232A32;
+							        border:none;
+								    background-color:#F7D26C;
 								    color: #fff;
 								    text-align: center;
 								    font-size: 16px;

@@ -1,6 +1,6 @@
 @extends('../layouts/main')
 @section('title')
-Promotion
+Topgainer
 @endsection
 @section('body_content')
 <style type="text/css">
@@ -55,12 +55,6 @@ Promotion
            $this_week_ed = date("Y-m-d",$sunday);
            $mon_start=date('Y-m-01', strtotime($dt));
            $mon_end=date('Y-m-t', strtotime($dt));
-
-
-
-
-
-               
             $per_coin=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->paginate(10);
             $per_coin2=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->get();
             if(Auth::user())
@@ -82,8 +76,6 @@ Promotion
 
            }
 
-
-
         @endphp
         <div class="container">
             <div class="row mb-5 mt-5 justify-content-center">
@@ -95,24 +87,6 @@ Promotion
                     @endphp
                 </div>
                 @endif
-                <div class="col-md-12 ">
-                    <div class="contact-div p-5">
-                        <center><img src="{{ asset('upload/images/'.$promote->logo) }}" width="50%"></center>
-                        <center>
-                            <h1>{{ $promote->title }}</h1>
-                            {{-- <p>Get the visibility you need. By promoting on coinmars, your coin/banner will be visible on top of all other coins..</p> --}}
-
-                        </center>
-                        <center>
-                            
-                            {{-- <p>
-                            To promote your coin & to discuss the best Promotion Options for you<br>
-                            Do never pay anyone for a promotion on our platform, unless you have received a confirmation email from this address ! (There are a lot of Scammers - be aware !) --}}
-                            <p>{{ $promote->content }}</p>
-                            <span style="color:#007bff;">Mail to: {{ $promote->email }} or Telegram</span><br>
-                        </center>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -121,7 +95,7 @@ Promotion
                 <div class="table-responsive">
                     <table  class="w-100 mytable mt-5" id="promoted_1">
                         <tr class="table-heading">
-                            <td>Promoted</td>
+                            <td>Topgainer</td>
                         </tr>
                         <thead class="my-2">
                             <tr>
@@ -308,14 +282,6 @@ Promotion
                     @endif
                 </div>
           </div>
-
-
-
-
-
-
-
-
           <script type="text/javascript">
             $(document).on("click" ,'.set5', function(){
                 $("#promoted_1").hide();

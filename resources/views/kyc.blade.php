@@ -1,6 +1,6 @@
 @extends('../layouts/main')
 @section('title')
-Contact us
+KYC
 @endsection
 @section('body_content')
 <div class="container">
@@ -15,18 +15,20 @@ Contact us
 		@endif
 		<div class="col-md-10 ">
 			<div class="contact-div p-5">
+				
 				<center>
-					<div class="form-wrapper mt-5">
-							<h2 class="title">Contact us</h2>
+					
+					<div class="form-wrapper">
+							<h2 class="title">KYC</h2>
 
 							<form method="POST" class="login-form" action="{{ url('user/contact') }}">
 							@csrf
-								<input type="text" name="name" placeholder="Name"
-								class="theme-input" value="@if(Auth::user()){{Auth::user()->name}} @endif">
+								<input type="text" name="name" placeholder="Name" class="theme-input"
+									 value="@if(Auth::user()){{Auth::user()->name}} @endif">
 
 
-								<input type="text" name="email" placeholder="Email"
-								class="theme-input" value="@if(Auth::user()){{Auth::user()->email}} @endif">
+								<input type="text" name="email" placeholder="Email" class="theme-input"
+									style=" " value="@if(Auth::user()){{Auth::user()->email}} @endif">
 
 								<textarea rows="7" name="msg" cols="5" placeholder="Type Your Message"
 									style=" width: 100%;
@@ -41,9 +43,7 @@ Contact us
 										text-align: center;
 										font-size: 22px;
 										border-radius: 25px;
-										box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
-										margin-top:3%"
-										>Submit</button>
+										margin-top:3%">Submit</button>
 							</form>
 						</div>
 				</center>

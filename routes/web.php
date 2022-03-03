@@ -29,6 +29,7 @@ Route::get('/', function () {
 Route::get('/log_in', function () {
     return view('login');
 });
+
 Route::get('/regis', function () {
     return view('regis');
 });
@@ -46,8 +47,28 @@ Route::get('/dis', function () {
     return view('dis');
 });
 
+Route::get('/token', function () {
+    return view('token');
+});
+Route::get('/topgainer', function () {
+    return view('topgainer');
+});
+Route::get('/new', function () {
+    return view('new');
+});
+Route::get('/audit', function () {
+    return view('audit');
+});
+Route::get('/KYC', function () {
+    return view('kyc');
+});
+Route::get('/FAQ', function () {
+    return view('faq');
+});
+
 
 Route::get('/contact_us', [App\Http\Controllers\WebsiteController::class, 'promote']);
+Route::get('/promote', [App\Http\Controllers\WebsiteController::class, 'promote2']);
 
 Route::get('see_all_coin', [App\Http\Controllers\userController::class, 'see_all_coin']);
 

@@ -1,6 +1,6 @@
 @extends('../layouts/main')
 @section('title')
-Promotion
+New
 @endsection
 @section('body_content')
 <style type="text/css">
@@ -55,12 +55,6 @@ Promotion
            $this_week_ed = date("Y-m-d",$sunday);
            $mon_start=date('Y-m-01', strtotime($dt));
            $mon_end=date('Y-m-t', strtotime($dt));
-
-
-
-
-
-               
             $per_coin=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->paginate(10);
             $per_coin2=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->get();
             if(Auth::user())
@@ -82,8 +76,6 @@ Promotion
 
            }
 
-
-
         @endphp
         <div class="container">
             <div class="row mb-5 mt-5 justify-content-center">
@@ -95,24 +87,6 @@ Promotion
                     @endphp
                 </div>
                 @endif
-                <div class="col-md-12 ">
-                    <div class="contact-div p-5">
-                        <center><img src="{{ asset('upload/images/'.$promote->logo) }}" width="50%"></center>
-                        <center>
-                            <h1>{{ $promote->title }}</h1>
-                            {{-- <p>Get the visibility you need. By promoting on coinmars, your coin/banner will be visible on top of all other coins..</p> --}}
-
-                        </center>
-                        <center>
-                            
-                            {{-- <p>
-                            To promote your coin & to discuss the best Promotion Options for you<br>
-                            Do never pay anyone for a promotion on our platform, unless you have received a confirmation email from this address ! (There are a lot of Scammers - be aware !) --}}
-                            <p>{{ $promote->content }}</p>
-                            <span style="color:#007bff;">Mail to: {{ $promote->email }} or Telegram</span><br>
-                        </center>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -121,7 +95,7 @@ Promotion
                 <div class="table-responsive">
                     <table  class="w-100 mytable mt-5" id="promoted_1">
                         <tr class="table-heading">
-                            <td>Promoted</td>
+                            <td>New</td>
                         </tr>
                         <thead class="my-2">
                             <tr>
@@ -215,107 +189,8 @@ Promotion
                         </tbody>
                     </table>
                     
-                    <table class="table table-hover" style="display:none;" id="promoted_2">
-                        
-
-                        <thead>
-                        <tr>
-                            <th style="text-align: left!important;"> Promoted Coins</th>
-                            <th class="som">Symbol</th>
-                            
-                            <th>Market Cap</th>
-                            <th>Launch</th>
-                            <th>Votes</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <style type="text/css">
-                            td a{
-                                display: block;
-                                cursor: pointer;
-                            }
-                        </style>
-                        @php $a=1;  @endphp
-                        @foreach($per_coin2 as $row_per)
-                            <tr>
-
-
-                                <td class="tddd"><a href="{{url('coins', ['id'=>$row_per->id])}}"><img src="{{$row_per->logo_link}}">{{$row_per->name}}</a></td></td>
-                                <td class="tdd som">
-                                    <a href="{{url('coins', ['id'=>$row_per->id])}}">{{$row_per->sym}}</a>
-                                  
-                                </td> 
-                                <td class="tdd"><a href="{{url('coins', ['id'=>$row_per->id])}}">${{$row_per->mark_cap}}</a></td>
-                                @php
-
-                                    $later_row_per = new DateTime($row_per->launch_date);
-                                    $diff_row_per = $today->diff($later_row_per)->format("%a");  @endphp
-                                @if($row_per->launch_date<$dt)
-                                    <td class="tdd"><a href="{{url('coins', ['id'=>$row_per->id])}}">{{$diff_row_per}} days</a></td>
-                                @elseif($row_per->launch_date==$dt)
-                                    <td class="tdd"> Launch Today</td>
-                                @else
-                                    <td class="tdd"><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
-
-                                @endif
-
-
-
-                                @if(Auth::user())
-                                    @php
-
-
-                                        $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
-
-                                        $check=count($check);
-
-                                    @endphp
-
-                                    @if($check==0)
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_per->id}}" type="button">🚀<span>{{$row_per->vote}}</span></button></a></td>
-                                    @else
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_per->id}}" type="button">🚀<span>{{$row_per->vote}}</span></button></td>
-                                    @endif
-                                @else
-                                    @php
-
-
-                                        $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
-
-
-                                    @endphp
-                                    @if($ses_check==0)
-
-                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_per->id}}" type="button"><span>🚀{{$row_per->vote}}</span></button></a></td>
-                                    @else
-                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_per->id}}" type="button">🚀<span>{{$row_per->vote}}</span></button></td>
-
-                                    @endif
-
-
-
-                                @endif
-                            </tr>
-                        @endforeach
-
-                        </tbody>
-                    </table>
-                    
-                    
-                    @if($xyz==10)
-                    <div style="width: 100%;text-align: center;"><button class="sbn btn btn-sm btn-outline-primary set5" style="width:40%;margin-right: 0;margin-left: 0;">See All</button>
-                    </div>
-                    @endif
                 </div>
           </div>
-
-
-
-
-
-
-
-
           <script type="text/javascript">
             $(document).on("click" ,'.set5', function(){
                 $("#promoted_1").hide();
