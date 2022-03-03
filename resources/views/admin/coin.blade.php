@@ -80,6 +80,7 @@ Add Coin
                                         <tr>
                                             
                                             <th>Logo</th>
+                                            <th>Image Banner</th>
                                             <th class="border-top-0">Name</th> 
                                             <th class="border-top-0">launch Date</th>
                                             <th class="border-top-0">Price</th>
@@ -90,6 +91,7 @@ Add Coin
                                     </thead>
                                     
                                     @php
+                                  
                                      $sub2=App\Models\add_coin::whereNull('approve')->take(50)->get();
 
 
@@ -100,6 +102,8 @@ Add Coin
                                         <tr>
                                             
                                             <td><img src="{{$row2->logo_link}}" style="height: 40px; width: 40px;"></td>
+                                            <td><img src="{{asset('images')}}/{{$row2->image}}" style="height: 40px; width: 40px;"></td>
+
                                             <td class="txt-oflo">{{$row2->name}}</td>
                                             
                                             <td class="txt-oflo">{{$row2->launch_date}}</td>
@@ -120,14 +124,13 @@ Add Coin
                                             </td>
                                             
                                         </tr>
-                                        
                                         @endforeach
-                                         <tr>
+                                         {{-- <tr>
                                         <td colspan="7"> 
                                             <center>   
-                                                <button class="sbn btn btn-sm btn-outline-primary set2 cap2" last_id="{{$sub2[49]->id}}" style="width:40%;margin-right: 0;margin-left: 0;">Show More</button></center>
+                                                <button class="sbn btn btn-sm btn-outline-primary set2 cap2" last_id="" style="width:40%;margin-right: 0;margin-left: 0;">Show More</button></center>
                                         </td>
-                                        </tr> 
+                                        </tr>  --}}
 
                                 </table>
                             </div>
@@ -147,7 +150,9 @@ Add Coin
                                         <tr>
                                             <th>id</th>
                                            <th>Logo</th>
+                                           <th>Image Banner</th>
                                             <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Image</th>
                                             
                                             <th class="border-top-0">launch Date</th>
                                             <th class="border-top-0">Price</th>
@@ -158,6 +163,7 @@ Add Coin
                                     </thead>
                                     
                                     @php
+                                    
                                      $sub1=App\Models\add_coin::whereNotNull('permote')->whereNotNull('approve')->take(100)->get();
 
 
@@ -168,8 +174,9 @@ Add Coin
                                         <tr>
                                             <td>{{$j++}}</td>
                                             <td><img src="{{$row1->logo_link}}" style="height: 40px; width: 40px;"></td>
+                                            <td><img src="{{asset('images')}}/{{$row1->image}}" style="height: 40px; width: 40px;"></td>
                                             <td class="txt-oflo">{{$row1->name}}</td>
-                                            
+
                                             <td class="txt-oflo">{{$row1->launch_date}}</td>
                                             <td><span class="text-success">${{$row1->mark_cap}}</span></td>
                                             <td><a type="button"  data-toggle="modal" data-target="#exampleMod{{$j}}" class="btn btn-info" style="color: white; width: 100%;">{{$row1->vote}}</a></td>
@@ -239,8 +246,8 @@ Add Coin
                                         <tr>
                                             
                                             <th>Logo</th>
+                                            <th>Image Banner</th>
                                             <th class="border-top-0">Name</th>
-                                            
                                             <th class="border-top-0">launch Date</th>
                                             <th class="border-top-0">Price</th>
                                             <th>vote</th>
@@ -259,8 +266,10 @@ Add Coin
                                         <tr>
                                             
                                             <td><img src="{{$row->logo_link}}" style="height: 40px; width: 40px;"></td>
+                                            <td><img src="{{asset('images')}}/{{$row->image}}" style="height: 40px; width: 40px;"></td>
+
                                             <td class="txt-oflo">{{$row->name}}</td>
-                                            
+
                                             <td class="txt-oflo">{{$row->launch_date}}</td>
                                             <td><span class="text-success">${{$row->mark_cap}}</span></td>
                                             <td><a type="button"  data-toggle="modal" data-target="#exampleModal{{$i}}" class="btn btn-info" style="color: white; width: 100%;">{{$row->vote}}</a></td>
@@ -316,10 +325,10 @@ Add Coin
                                           </div>
                                         </div>
                                         @endforeach
-                                        <caption style="caption-side:bottom">
+                                        {{-- <caption style="caption-side:bottom">
                                             <center>   
-                                                <button class="sbn btn btn-sm btn-outline-primary set1 cap1" last_id="{{$sub[49]->id}}" style="width:40%;margin-right: 0;margin-left: 0;">Show More</button></center>
-                                        </caption>        
+                                                <button class="sbn btn btn-sm btn-outline-primary set1 cap1" last_id="{{$sub[0]->id}}" style="width:40%;margin-right: 0;margin-left: 0;">Show More</button></center>
+                                        </caption>         --}}
                                           
                                         </tbody>
                                 </table>

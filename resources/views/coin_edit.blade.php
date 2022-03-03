@@ -61,8 +61,8 @@ Add Coin
 				
                 <div class="form-wrapper mt-5">
 						
-						
-						<form method="POST" class="login-form" action="{{ url('update_coin' , ['id'=>$coin->id]) }}">
+						{{-- @dd(date('m/d/y m:i a',strtotime($coin->launch_date))); --}}
+						<form method="POST" class="login-form" action="{{ url('coinUpdate')}}/{{$coin->id}}" enctype="multipart/form-data">
                         @csrf
                         
 					    <div class="row">
@@ -80,7 +80,7 @@ Add Coin
 							    <input type="text" placeholder=": e.g. BTC" 
 								    class="t1" name="sym" value="{{$coin->sym}}" required>
                                 <label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Description<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
-	                            <textarea rows="7" cols="5" required name="des" placeholder="e.g. Bitcoin is a decentralized digital currency"
+	                            <textarea class="t1" rows="7" cols="5" required name="des" placeholder="e.g. Bitcoin is a decentralized digital currency"
 	                                style=" width: 100%;
 										    background-color: #232A32;
 		                                    border: 0px solid #232A32;
@@ -102,8 +102,9 @@ Add Coin
 									    padding: 0 25px;
 									    border-radius: 5px;">{{$coin->other}}</textarea> 
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Launch date<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
-								<input type="datetime-local" id="formLaunch" class="form-control t1" value="{{$coin->launch_date}}" name="launch_date">
-					    		
+								<input type="datetime-local" id="formLaunch" class="form-control t1" value="{{date('m/d/y m:i a',strtotime($coin->launch_date))}}" name="launch_date">
+								<input type="file"  class="t1 mt-3" name="image" required>
+								<img src="{{asset('images')}}/{{$coin->image}}" class="mt-2" width="40" height="40" alt="">
 					    	</div>
 					    	<div class="col-md-6">
 					    		<h4 class="title" style="float: left;">Coin contracts</h4><br><hr>
@@ -123,7 +124,7 @@ Add Coin
                                 <label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Address<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 								    
 								<input type="text" 
-								    class="t1" name="address" value=" {{$coin->address}}" required>
+								    class="t1" name="address" value=" {{$coin->address}}" >
 							    
 								
 								<!-- <input type="text" placeholder="Ethereum contract address" 
@@ -176,7 +177,7 @@ Add Coin
 								    font-size: 16px;
 								    border-radius: 25px;
 								    margin-bottom:7%;
-								    margin-top:3%">Submit</button>		    
+								    margin-top:3%">Update</button>		    
 						</form>
 					</div>
 			</center>

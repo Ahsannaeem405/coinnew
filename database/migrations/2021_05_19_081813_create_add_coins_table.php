@@ -27,6 +27,10 @@ class CreateAddCoinsTable extends Migration
             $table->text('act_price')->nullable();
             $table->text('mark_cap')->nullable();
             $table->date('launch_date')->nullable();
+            $table->string('image')->nullable();
+            $table->string('vote')->nullable();
+            $table->string('devote')->nullable();
+            $table->string('approve')->nullable();
             $table->timestamps();
         });
     }

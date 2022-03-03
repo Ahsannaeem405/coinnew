@@ -243,7 +243,7 @@ class userController extends Controller
      public function approve($id)
     {
 
-
+      // dd($id);
        $data=add_coin::find($id);
        $data->approve=1;
        $data->save();
@@ -295,10 +295,9 @@ class userController extends Controller
     return view('coin_edit',compact('coin'));
 
     }
+
     public function update_coin(Request $request,$id)
     {
-
-
 
 
        $data=add_coin::find($id);
@@ -321,9 +320,15 @@ class userController extends Controller
        $data->youtube=$request->youtube;
        $data->insta=$request->insta;
        $data->chart=$request->chart;
-       $data->approve=Null;
-
-       $data->update();
+       if(isset($request->image))
+        {
+        $image=$request->file('image');
+        $imageName = $image->getClientOriginalName();
+        $data->image=$imageName;
+        $path=$image->move(public_path('images'),$imageName);
+           
+        }
+       $data->save();
        if(Auth::user()->role=='admin')
        {
         return view('admin/coin')->with('success', 'You Successfully update it');

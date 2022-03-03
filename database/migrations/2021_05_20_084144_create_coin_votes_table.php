@@ -20,6 +20,7 @@ class CreateCoinVotesTable extends Migration
             $table->bigInteger('coin_id')->unsigned();
             $table->foreign('coin_id')->references('id')->on('add_coins')->onDelete('cascade');
             $table->text('vote')->nullable();
+            $table->text('devote')->nullable();
             
             $table->timestamps();
         });
