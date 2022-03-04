@@ -16,12 +16,16 @@ Add Coin
 		width: 100%;
 
 	}
+    tr td img {
+		width: 60px;
+		height: 60px;
+	}
 	
 
 	
 	.bty{
 		width: 80%;
-		border: 1px solid #9488f0;
+		border: 1px solid #e2ab10;
 		color: white;
 		margin-bottom: 3%;
 		
@@ -32,7 +36,7 @@ Add Coin
 	}
 
 	.bty:hover{
-		background-color:#9488f0;
+		background-color: #e2ab10;
 		
 	}
 	.per_out_sbn{
@@ -129,92 +133,93 @@ Add Coin
         </div>
     @endif
    
-                    <div class="container-fluid mt-3" style=" padding-left: 8%;
-    padding-right: 8%;">
+                    <!-- <div class="container-fluid mt-3" style=" padding-left: 8%;
+                        padding-right: 8%;">
                         <div class="row">
-                   @foreach($images3 as $row_img3)
+                            @foreach($images3 as $row_img3)
 
                             <a href="{{$row_img3->url}}" style="text-align: center;margin-left: auto;margin-right: auto;">
                                 
                                 <img class="img-fluid log_ban rounded mb-2" src="{{url('upload/images/'.$row_img3->file)}}" width="100%"></a>
                        
-                    @endforeach
-                    </div>    
+                            @endforeach
+                        </div>    
                     </div>
 
-    <div class="row mx-auto my-auto">
-        <div id="myCarousel" class="carousel slide container-fluid" data-ride="carousel">
-            <div class="carousel-inner w-100" role="listbox">
+                    <div class="row mx-auto my-auto">
+                        <div id="myCarousel" class="carousel slide container-fluid" data-ride="carousel">
+                            <div class="carousel-inner w-100" role="listbox">
 
-                @foreach($images as $row_img)
-                    <div class="carousel-item active">
-                        <div class="col-lg-4 col-md-6">
-                            <a href="{{$row_img->url}}">
-                                <img class="img-fluid rounded" src="{{url('upload/images/'.$row_img->file)}}"></a>
+                                @foreach($images as $row_img)
+                                    <div class="carousel-item active">
+                                        <div class="col-lg-4 col-md-6">
+                                            <a href="{{$row_img->url}}">
+                                                <img class="img-fluid rounded" src="{{url('upload/images/'.$row_img->file)}}"></a>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                @for($i=1; $i < count($images2); $i++)
+                                    <div class="carousel-item">
+                                        <div class="col-lg-4 col-md-6">
+                                            <a href="{{$images2[$i]->url}}">
+                                                <img class="img-fluid rounded" src="{{url('upload/images/'.$images2[$i]->file)}}"></a>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                        
                         </div>
-                    </div>
-                @endforeach
-
-                @for($i=1; $i < count($images2); $i++)
-                    <div class="carousel-item">
-                        <div class="col-lg-4 col-md-6">
-                            <a href="{{$images2[$i]->url}}">
-                                <img class="img-fluid rounded" src="{{url('upload/images/'.$images2[$i]->file)}}"></a>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-           
-        </div>
-    </div>
+                    </div> -->
 
 @foreach($coin as $row)
 <div class="container-fluid mt-3">
-	<div class="row marv ml-1 mb-4 mr-1" style="background-color:#181d23;border-radius: 15px;color:white;">
+	<div class="row marv ml-1 mb-4 mr-1">
 		<div class="col-md-8 mb-3">
+            
+                <div class="row mt-3">
+                    <div class="col-md-2">
+                        <img src="{{$row->logo_link}}" alt="Logo" style="height: 100px; width: 100px; margin-right: 5px;">
+                    </div>
+                    <div class="col-md-10">
+                        <h3 style="font-size:1.75rem;color:white;margin-top:2%;">{{$row->name}}</h3>
+                        
 
-			<div class="row mt-3">
-				<div class="col-md-2">
-					<img src="{{$row->logo_link}}" alt="Logo" style="height: 100px; width: 100px; margin-right: 5px;">
-				</div>
-				<div class="col-md-10">
-					<h3 style="font-size:1.75rem;color:white;margin-top:2%;">{{$row->name}}</h3>
-					
+                        <span class="mx-2 mt-2" style="background-color: rgb(148, 136, 240);
+                                    height: 2.6rem;
+                                    line-height: 2.6rem;
+                                    font-size: 1.4rem;
+                                    display: inline-flex;
+                                    color: white;
+                                font-weight: 600;
+                                padding: 0px 1rem;
+                                border-radius: 1rem;">{{$row->sym}}</span>
+                        <span class="mx-2 mt-2" style="background-color: rgb(35, 42, 50);
 
-					<span style="background-color: rgb(148, 136, 240);
-	                            height: 2.6rem;
-	                            line-height: 2.6rem;
-	                            font-size: 1.4rem;
-	                            display: inline-flex;
-	    
-	                           font-weight: 600;
-	                           padding: 0px 1rem;
-	                           border-radius: 1rem;">{{$row->sym}}</span>
-					<span style="background-color: rgb(35, 42, 50);
+                                    height: 2.6rem;
+                                    line-height: 2.6rem;
+                                    font-size: 1rem;
+                                    display: inline-flex;
+                                    color: white;
+                                font-weight: 500;
+                                padding: 0px 1rem;
+                                border-radius: 1rem;">Today Votes {{$row->vote}}</span>
+                                <span class="mx-2 mt-2" style="background-color: rgb(35, 42, 50);
 
-	                            height: 2.6rem;
-	                            line-height: 2.6rem;
-	                            font-size: 1.4rem;
-	                            display: inline-flex;
-	    
-	                           font-weight: 600;
-	                           padding: 0px 1rem;
-	                           border-radius: 1rem;">Today Votes {{$row->vote}}</span>
-	                           <span style="background-color: rgb(35, 42, 50);
-
-	                            height: 2.6rem;
-	                            line-height: 2.6rem;
-	                            font-size: 1.4rem;
-	                            display: inline-flex;
-	    
-	                           font-weight: 600;
-	                           padding: 0px 1rem;
-	                           border-radius: 1rem;">Votes {{$tod}}</span>
+                                    height: 2.6rem;
+                                    line-height: 2.6rem;
+                                    font-size: 1rem;
+                                    display: inline-flex;
+                                    color: white;
+                                font-weight: 500;
+                                padding: 0px 1rem;
+                                border-radius: 1rem;">Votes {{$tod}}</span>
 
 
-					
-				</div>
-			</div>
+                        
+                    </div>
+                </div>
+            
 			<h4 class="mt-4" style="color:white;">Contracts:</h4>
 			<div class="input-group mb-3">
 			 
