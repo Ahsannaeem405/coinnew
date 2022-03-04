@@ -171,7 +171,7 @@ if it's not present, don't show loader */
                                          @foreach($images2 as $row_img3)
                                            
                                             <div class="col-lg-2 col-md-4 col-6  px-0  text-center">
-                                                <a href="{{$row_img3->url}}" class="promoted-gig mx-auto">   
+                                                    <a href="{{url('coins', ['id'=>$row_img3->id])}}" class="promoted-gig mx-auto"> 
                                                     <img class="" src="{{url($row_img3->logo_link)}}"></a>
                                                     <h5 class="my-1">{{$row_img3->name}}</h5>
                                             </div> 
@@ -180,9 +180,9 @@ if it's not present, don't show loader */
                                             @endforeach
                                             @for($i=$imgCount;$i<5;$i++)
                                             <div class="col-lg-2 col-md-4 col-6  px-0  text-center">
-                                                <a href="{{$row_img3->url}}" class="promoted-gig">   
+                                                    <a href="#" class="promoted-gig">
                                                     <img class=""src="{{url('upload/images/procash.png')}}"></a>
-                                                    <h5 class="my-1">CroCash</h5>
+                                                    <h5 class="my-1">{{$row_img3->name}}</h5>
                                             </div> 
                                            
                                           @endfor
@@ -195,7 +195,7 @@ if it's not present, don't show loader */
                                     <div class="owl-carousel owl-carousel1 owl-theme">
                                             @foreach($images2 as $row_img)
                                                     <div class="item text-center mx-auto">  
-                                                            <a href="{{$row_img->url}}" class="">
+                                                        <a href="{{url('coins', ['id'=>$row_img->id])}}">
                                                                 <img class="img-fluid rounded " src="{{url('images/'.$row_img->image)}}"></a>        
                                                     </div>
                                             @endforeach  
@@ -281,13 +281,14 @@ if it's not present, don't show loader */
                         <tr>
                             <th class="">#</th>
                             <th>Name</th>
-                            <th >Symbol</th>
+                            <th>Symbol</th>
                             <th>Price</th>
                             <th>Launch</th>
                             <th>CMC | CG</th>
                             <th>Audit</th>
                             <th>KYC</th>
-                            <th>upvote</th>
+                            <th>vote</th>
+                            <th>devote</th>
                             <th>more</th>
                         </tr>
                     </thead>
@@ -296,10 +297,12 @@ if it's not present, don't show loader */
                         $xyz=0;
                         @endphp
                         @foreach($per_coin as $row_per)
-                            @php $xyz++; @endphp
+                            @php $xyz++;
+                                $i=1;
+                            @endphp
                             <tr>
 
-                                <td>1</td>
+                                <td>{{ $i++}}</td>
                                 <td >
                                    
                                          <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name"><img src="{{$row_per->logo_link}}" class=""><b>{{$row_per->name}}</b></a>
@@ -323,9 +326,13 @@ if it's not present, don't show loader */
                                     <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
 
                                 @endif
-
+                                <td></td>
+                                <td><button class="vote-btn">321</button></td>
+                                <td><button class="vote-btn">321</button></td>
                                 @if(Auth::user())
                                     @php
+
+
                                         $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
 
                                         $check=count($check);
@@ -333,22 +340,22 @@ if it's not present, don't show loader */
                                     @endphp
 
                                     @if($check==0)
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
+                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_per->id}}" type="button">🚀<span>{{$row_per->vote}}</span></button></a></td>
                                     @else
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}"> {{$row_per->vote}}</span></td>
+                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
                                     @endif
-
                                      {{--devote start--}}
                                      @if($check==0)
-                                        <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                                        <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_per->id}}" type="button">🚀<span>{{$row_per->devote}}</span></button></td>
                                     @endif    
-
                                 @else
                                     @php
 
+
                                         $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
+
 
                                     @endphp
                                     @if($ses_check==0)
@@ -358,18 +365,15 @@ if it's not present, don't show loader */
                                         <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
 
                                     @endif
-
                                      {{--devote start--}}
-                                     @if($check==0)
-                                        <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                                     @if($ses_check==0)
+                                        <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></button></td>
                                     @endif    
-
                                 @endif
-                                <td></td>
-                                <td><button class="vote-btn">321</button></td>
-                                <td>Info</td>
+                               
+                                <td>  <a href="{{url('coins', ['id'=>$row_per->id])}}">Info</a></td>
                             </tr>
                         @endforeach
                         
@@ -393,16 +397,19 @@ if it's not present, don't show loader */
                             <th>CMC | CG</th>
                             <th>Audit</th>
                             <th>KYC</th>
-                            <th>upvote</th>
+                           <th>vote</th>
+                            <th>devote</th>
                             <th>more</th>
                         </tr>
                         </thead>
                         <tbody >
-                        @php $al_kk=0; @endphp
+                        @php $al_kk=0;
+                            $i=1;
+                        @endphp
                         @foreach($today_coin as $row_today)
                         @php $al_kk++; @endphp
                         <tr>
-                            <td>1</td>
+                            <td>{{$i++}}</td>
                                 <td ><a href="{{url('coins', ['id'=>$row_today->id])}}" class="name"><img src="{{$row_today->logo_link}}"  ><b>{{$row_today->name}}</b></a></td>
                                 <td>
                                     <a href="{{url('coins', ['id'=>$row_today->id])}}">{{$row_today->sym}}</a>
@@ -429,40 +436,54 @@ if it's not present, don't show loader */
 
                                     }
                                 @endphp
+                                 <td></td>
+                                 <td></td>
+                                <td></td>
                                 @if(Auth::user())
-                                    @if($check1==0)
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}" >{{$row_today->vote}}</span></td>
+                                    @php
+
+
+                                        $check=DB::select("select * from coin_votes where ((coin_id=$row_today->id) and ((user_id=$us) or (user_id=$get_ses)))");
+
+                                        $check=count($check);
+
+                                    @endphp
+
+                                    @if($check==0)
+                                        <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></a></td>
                                     @else
-                                        <td class="vo1{{$row_today->id}}"><span  abc="{{$row_today->id}}" >{{$row_today->vote}}</span></td>
+                                        <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></td>
                                     @endif
-                                   
-                                 {{--devote start--}}
-                                 @if($check1==0)
-                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><span  devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                     {{--devote start--}}
+                                     @if($check==0)
+                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><span  un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                     @endif    
                                 @else
                                     @php
-                                        $see_check=App\Models\coin_vote::where('coin_id',$row_today->id)->where('user_id',$get_ses)->count();
+
+
+                                        $ses_check=App\Models\coin_vote::where('coin_id',$row_today->id)->where('user_id',$get_ses)->count();
+
+
                                     @endphp
-                                    @if($see_check==0)
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></td>
+                                    @if($ses_check==0)
+
+                                        <td style="text-align: center;" class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></a></td>
                                     @else
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></td>
+                                        <td style="text-align: center;" class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></td>
+
                                     @endif
-                                    {{--devote start--}}
-                                    @if($see_check==0)
-                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><span devote="{{$row_today->id}}">{{$row_today->devote}}</span></td>
+                                     {{--devote start--}}
+                                     @if($ses_check==0)
+                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><span devote="{{$row_today->id}}">{{$row_today->devote}}</span></button></td>
                                     @else
-                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><span un_devote="{{$row_today->id}}">{{$row_today->devote}}</span></td>
+                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><span un_devote="{{$row_today->id}}">{{$row_today->devote}}</span></button></td>
                                     @endif    
-
-
                                 @endif
-                                <td></td>
-                                <td><button class="vote-btn">123</button></td>
-                                <td>Info</td>
+                               
+                                <td><a href="{{url('coins', ['id'=>$row_today->id])}}">Info</a></td>
                             </tr>
                         @endforeach
                        
