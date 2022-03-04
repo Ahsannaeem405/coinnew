@@ -21,7 +21,7 @@ Audit
 					<div class="form-wrapper">
 							<h2 class="title">Audit</h2>
 
-							<form method="POST" class="login-form" action="{{ url('user/contact') }}">
+							<form method="POST" class="login-form" action="{{ url('user/audit') }}">
 							@csrf
 								<input type="text" name="name" placeholder="Name" class="theme-input"
 									 value="@if(Auth::user()){{Auth::user()->name}} @endif">

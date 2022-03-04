@@ -161,7 +161,9 @@ Route::prefix('/user')->middleware(['auth','user'])->group(function (){
         });
     Route::post('/coin_save',[App\Http\Controllers\userController::class, 'coin_save']);
     Route::post('/com_save',[App\Http\Controllers\userController::class, 'com_save']);
-
+    Route::post('/audit',[App\Http\Controllers\userController::class, 'audit']);
+    Route::post('/kyc',[App\Http\Controllers\userController::class, 'kyc']);
+    
 
 
 
@@ -175,6 +177,8 @@ Route::prefix('/user')->middleware(['auth','user'])->group(function (){
 });
 
 Route::post('/user/contact',[App\Http\Controllers\userController::class, 'contact']);
+
+
  Route::get('/user/get_see_all_new',[App\Http\Controllers\userController::class, 'get_see_all_new']);
 
 Auth::routes();

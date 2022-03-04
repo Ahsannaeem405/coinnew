@@ -18,7 +18,8 @@ use App\Mail\SendMail2;
 
 use App\Models\slider_img;
 use App\Models\ip_add;
-
+use App\Models\KYC;
+use App\Models\Audit;
 use DB;
 use Session;
 use DateTime;
@@ -445,6 +446,45 @@ class userController extends Controller
 
      Mail::to('contact@coinhype.to')->send(new SendMail1($data));
      return back()->with('success', 'Thanks for contacting us!');
+
+
+
+    }
+    public function audit(Request $request)
+    {
+       $voty=new Audit();
+       $voty->name=$request->name;
+       $voty->email=$request->email;
+       $voty->msg=$request->msg;
+       $voty->save();
+      $data = array(
+            'name'      =>  $request->name,
+            'message'   =>   $request->msg,
+            'mail'=>$request->email
+        );
+
+     Mail::to('contact@coinhype.to')->send(new SendMail1($data));
+     return back()->with('success', 'Audit Successfully Submited!');
+
+
+
+    }
+    public function kyc(Request $request)
+    {
+
+       $voty=new KYC();
+       $voty->name=$request->name;
+       $voty->email=$request->email;
+       $voty->msg=$request->msg;
+       $voty->save();
+      $data = array(
+            'name'      =>  $request->name,
+            'message'   =>   $request->msg,
+            'mail'=>$request->email
+        );
+
+     Mail::to('contact@coinhype.to')->send(new SendMail1($data));
+     return back()->with('success', 'KFC Successfully Submited!');
 
 
 
