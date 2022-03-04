@@ -75,12 +75,13 @@ class userController extends Controller
     public function p_dt($id)
     {
 
-    //dd($coin['created_by']);
+   
     $soc=0;
     $coin=add_coin::where('id',$id)->get();
     $date = date('Y-m-d');
 
     $tod=coin_vote::where('coin_id',$id)->whereDate('created_at',$date)->count();
+   
     return view('p_dt',compact('coin','soc','tod'));
 
     }

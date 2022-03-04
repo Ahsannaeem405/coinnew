@@ -167,6 +167,7 @@ Add Coin
            
         </div>
     </div>
+
 @foreach($coin as $row)
 <div class="container-fluid mt-3">
 	<div class="row marv ml-1 mb-4 mr-1" style="background-color:#181d23;border-radius: 15px;color:white;">
@@ -269,6 +270,7 @@ Add Coin
 						@endif
 		</div>
 		<div class="col-md-6 col-6 offset-3">
+
 		@if(Auth::user())
 
             @php
@@ -322,6 +324,7 @@ Add Coin
             @endif
         </div>    
 	</div>
+  
 	<!-- <div class="row marv ml-5 mb-5 mr-5" style="border-radius: 15px;color:white;">
 		
 	    <h4>Discussion</h4>
@@ -402,7 +405,182 @@ Add Coin
     </div>
   </div>
 </div>
-@include('permote')
+<div class="container-fluid cony mt-lg-5 mt-0 pr-0 pl-1 px-lg-5 pt-0 pt-lg-0">
+              @php
+
+            $check=0;
+            $dt=date('Y-m-d');
+            $today = new DateTime($dt);
+            $dtm=date('m');
+
+           //////////current week/////////
+           $monday = strtotime("last monday");
+           $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+           $sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+           $this_week_sd = date("Y-m-d",$monday);
+           $this_week_ed = date("Y-m-d",$sunday);
+           $mon_start=date('Y-m-01', strtotime($dt));
+           $mon_end=date('Y-m-t', strtotime($dt));
+
+
+
+
+
+            $all_coin=App\Models\add_coin::whereNotNull('approve')->orderBy('vote', 'DESC')->get();
+            $pre_coin=App\Models\add_coin::whereNotNull('approve')->whereNotNull('checkbox')->paginate(30);
+
+            
+            $all_coin2=App\Models\add_coin::whereNotNull('approve')->where('id', '>','100' )
+               ->take(10)->get();
+               
+            $per_coin=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->paginate(10);
+            $per_coin2=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->get();
+            if(Auth::user())
+            {
+            $us=Auth::user()->id;
+            }
+            else{
+            $us=0;
+            }
+            if(Auth::user())
+            {
+            $your_coin=App\Models\add_coin::where('created_by',Auth::user()->id)->get();
+            }
+            $today_coin=App\Models\add_coin::whereNotNull('approve')->orderBy('vote', 'DESC')->paginate(10);
+            $today_coin_all=App\Models\add_coin::whereNotNull('approve')->orderBy('vote', 'DESC')->paginate(80);
+            $weekly_coin=App\Models\add_coin::whereDate('created_at','>=',$this_week_sd)->whereDate('created_at','<=',$this_week_ed)->whereNotNull('approve')->orderBy('vote', 'DESC')->paginate(30);
+            $weekly_coin2=App\Models\add_coin::whereDate('created_at','>=',$this_week_sd)->whereDate('created_at','<=',$this_week_ed)->whereNotNull('approve')->orderBy('vote', 'DESC')->take('120')->get();
+
+            $monthly_coin=App\Models\add_coin::whereDate('created_at','>=',$mon_start)->whereDate('created_at','<=',$mon_end)->orderBy('vote', 'DESC')->whereNotNull('approve')->paginate(30);
+            $monthly_coin2=App\Models\add_coin::whereMonth('created_at',$dtm)->orderBy('vote', 'DESC')->whereNotNull('approve')->take('200')->get();
+
+           if(Session::has('id'))
+           {
+           $get_ses=Session::get('id');
+
+           }
+           else{
+            $get_ses=0;
+
+           }
+
+
+           //$get_ip=DB::select("select * from ip_adds where ((created_at='$dt') and  ((user_id=$us)  or (user_id=$get_ses)))");
+
+        @endphp
+  <div class="table-responsive">
+      <table class="w-100 mytable mt-5" id="promoted_1">    
+          <tr class="table-heading">
+              <td>Promoted</td>
+          </tr>
+          <thead class="my-2">
+              
+              <tr>
+                  <th class="">#</th>
+                  <th>Name</th>
+                  <th >Symbol</th>
+                  <th>Price</th>
+                  <th>Launch</th>
+                  <th>CMC | CG</th>
+                  <th>Audit</th>
+                  <th>KYC</th>
+                  <th>upvote</th>
+                  <th>more</th>
+              </tr>
+          </thead>
+          <tbody>
+              @php $a=1;
+              $xyz=0;
+              @endphp
+              @foreach($per_coin as $row_per)
+                  @php $xyz++; @endphp
+                  <tr>
+
+                      <td>1</td>
+                      <td >
+                         
+                               <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name"><img src="{{$row_per->logo_link}}" class=""><b>{{$row_per->name}}</b></a>
+                        
+                         </td>
+
+                      <td >
+                          <a href="{{url('coins', ['id'=>$row_per->id])}}">{{$row_per->sym}}</a>
+                        
+                      </td>   
+                      <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">${{number_format($row_per->mark_cap , 2,'.', ',' )}}</a></td>
+                      @php
+
+                          $later_row_per = new DateTime($row_per->launch_date);
+                          $diff_row_per = $today->diff($later_row_per)->format("%a");  @endphp
+                      @if($row_per->launch_date<$dt)
+                          <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">{{$diff_row_per}} days</a></td>
+                      @elseif($row_per->launch_date==$dt)
+                          <td> Launch Today</td>
+                      @else
+                          <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
+
+                      @endif
+
+                      @if(Auth::user())
+                          @php
+                              $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
+
+                              $check=count($check);
+
+                          @endphp
+
+                          @if($check==0)
+                              <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
+                          @else
+                              <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}"> {{$row_per->vote}}</span></td>
+                          @endif
+
+                           {{--devote start--}}
+                           @if($check==0)
+                              <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                          @else
+                              <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                          @endif    
+
+                      @else
+                          @php
+
+                              $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
+
+                          @endphp
+                          @if($ses_check==0)
+
+                              <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></a></td>
+                          @else
+                              <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
+
+                          @endif
+
+                           {{--devote start--}}
+                           @if($check==0)
+                              <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                          @else
+                              <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
+                          @endif    
+
+                      @endif
+                      <td></td>
+                      <td><button class="vote-btn">321</button></td>
+                      <td>Info</td>
+                  </tr>
+              @endforeach
+              
+          </tbody>
+      </table>
+          
+          
+  </div>
+
+          @if($xyz==10)
+          <div style="width: 100%;text-align: center;"><button class="sbn btn btn-sm btn-outline-primary set5" style="width:40%;margin-right: 0;margin-left: 0;">See All</button>
+          </div>
+      @endif
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>

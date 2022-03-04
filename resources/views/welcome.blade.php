@@ -154,40 +154,38 @@ if it's not present, don't show loader */
                                 
                                 <div class="col-12 d-block d-lg-none ">
                                     <div class="owl-carousel owl-carousel2 owl-theme">
-                                        @foreach($images3 as $row_img3)
+                                        @foreach($images2 as $row_img3)
                                             <div class="item text-center mx-auto">  
                                             <a href="{{$row_img3->url}}" class="promoted-gig mx-auto">   
-                                                        <img class="" src="{{url('upload/images/'.$row_img3->file)}}"></a>    
-                                                        <h5 class="my-1">CroCash</h5>   
+                                                <img class="" src="{{url($row_img3->logo_link)}}"></a>  
+                                                <h5 class="my-1">{{$row_img3->name}}</h5> 
                                             </div> 
                                         @endforeach
                                     </div>
                                 </div>
                                 <div class="col-12 d-none d-lg-block py-4">
                                     <div class="row justify-content-center ">
-                                         @foreach($images3 as $row_img3)
+                                        @php
+                                            $imgCount=count($images2); 
+                                            @endphp
+                                         @foreach($images2 as $row_img3)
+                                           
                                             <div class="col-lg-2 col-md-4 col-6  px-0  text-center">
                                                 <a href="{{$row_img3->url}}" class="promoted-gig mx-auto">   
-                                                    <img class="" src="{{url('upload/images/'.$row_img3->file)}}"></a>
-                                                    <h5 class="my-1">CroCash</h5>
+                                                    <img class="" src="{{url($row_img3->logo_link)}}"></a>
+                                                    <h5 class="my-1">{{$row_img3->name}}</h5>
                                             </div> 
+                                          
+                                          
                                             @endforeach
-
+                                            @for($i=$imgCount;$i<5;$i++)
                                             <div class="col-lg-2 col-md-4 col-6  px-0  text-center">
                                                 <a href="{{$row_img3->url}}" class="promoted-gig">   
                                                     <img class=""src="{{url('upload/images/procash.png')}}"></a>
                                                     <h5 class="my-1">CroCash</h5>
                                             </div> 
-                                            <div class="col-lg-2 col-md-4 col-6  px-0  text-center">
-                                                <a href="{{$row_img3->url}}" class="promoted-gig">   
-                                                    <img class="" src="{{url('upload/images/procash.png')}}"></a>
-                                                    <h5 class="my-1">CroCash</h5>
-                                            </div> 
-                                            <div class="col-lg-2 col-md-4 col-6  px-0 text-center">
-                                                <a href="{{$row_img3->url}}" class="promoted-gig">   
-                                                    <img class="" src="{{url('upload/images/procash.png')}}"></a>
-                                                    <h5 class="my-1">CroCash</h5>
-                                            </div> 
+                                           
+                                          @endfor
                                         </div>
                                 
                                 </div>
@@ -195,10 +193,10 @@ if it's not present, don't show loader */
                                 
                                 <div class="col-12 slider-div py-4">
                                     <div class="owl-carousel owl-carousel1 owl-theme">
-                                            @foreach($images as $row_img)
+                                            @foreach($images2 as $row_img)
                                                     <div class="item text-center mx-auto">  
                                                             <a href="{{$row_img->url}}" class="">
-                                                                <img class="img-fluid rounded " src="{{url('upload/images/'.$row_img->file)}}"></a>        
+                                                                <img class="img-fluid rounded " src="{{url('images/'.$row_img->image)}}"></a>        
                                                     </div>
                                             @endforeach  
                                     </div>
@@ -374,76 +372,7 @@ if it's not present, don't show loader */
                                 <td>Info</td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td>1</td>
-                            <td >
-                                    <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name"><img src="{{$row_per->logo_link}}" ><b>{{$row_per->name}}</b></a>
-                            </td>
-                            <td >
-                                <a href="{{url('coins', ['id'=>$row_per->id])}}">{{$row_per->sym}}</a>
-                            
-                            </td>   
-                            <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">${{number_format($row_per->mark_cap , 2,'.', ',' )}}</a></td>
-                            @php
-
-                                $later_row_per = new DateTime($row_per->launch_date);
-                                $diff_row_per = $today->diff($later_row_per)->format("%a");  @endphp
-                            @if($row_per->launch_date<$dt)
-                                <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">{{$diff_row_per}} days</a></td>
-                            @elseif($row_per->launch_date==$dt)
-                                <td> Launch Today</td>
-                            @else
-                                <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
-
-                            @endif
-
-                            @if(Auth::user())
-                                @php
-                                    $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
-
-                                    $check=count($check);
-
-                                @endphp
-
-                                @if($check==0)
-                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
-                                @else
-                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}"> {{$row_per->vote}}</span></td>
-                                @endif
-
-                                {{--devote start--}}
-                                @if($check==0)
-                                    <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
-                                @else
-                                    <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
-                                @endif    
-
-                            @else
-                                @php
-
-                                    $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
-
-                                @endphp
-                                @if($ses_check==0)
-
-                                    <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></a></td>
-                                @else
-                                    <td style="text-align: center;" class="vo1{{$row_per->id}}"> <span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
-
-                                @endif
-
-                                {{--devote start--}}
-                                @if($check==0)
-                                    <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}"> {{$row_per->devote}}</span></td>
-                                @else
-                                    <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></td>
-                                @endif    
-
-                            @endif
-                            <td></td>
-                            <td><button class="vote-btn">123</button></td>
-                            <td>Info</td>
-                            </tr>
+                        
                     </tbody>
                 </table>
                     
@@ -536,71 +465,7 @@ if it's not present, don't show loader */
                                 <td>Info</td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td>1</td>
-                                <td ><a href="{{url('coins', ['id'=>$row_today->id])}}" class="name"><img src="{{$row_today->logo_link}}"  ><b>{{$row_today->name}}</b></a></td>
-                                <td>
-                                    <a href="{{url('coins', ['id'=>$row_today->id])}}">{{$row_today->sym}}</a>
-                                  
-                                </td> 
-                                <td ><a href="{{url('coins', ['id'=>$row_today->id])}}">${{$row_today->mark_cap}}</a></td>
-                                @php
-                                    $later_row_today = new DateTime($row_today->launch_date);
-                                    $diff_row_today= $today->diff($later_row_today)->format("%a");  @endphp
-                                @if($row_today->launch_date<$dt)
-                                    <td ><a href="{{url('coins', ['id'=>$row_today->id])}}">{{$diff_row_today}} days</a></td>
-                                @elseif($row_today->launch_date==$dt)
-                                    <td >Launch Today</td>
-                                @else
-                                    <td ><a href="{{url('coins', ['id'=>$row_today->id])}}">Launch in {{$diff_row_today}} days</a></td>
-
-                                @endif
-                                @php
-                                    if(Auth::user())
-                                    {
-                                     $check1=DB::select("select * from coin_votes where ((coin_id=$row_today->id) and ((user_id=$us) or (user_id=$get_ses)))");
-                                      
-                                      $check1=count($check1);
-
-                                    }
-                                @endphp
-                                @if(Auth::user())
-                                    @if($check1==0)
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}" >{{$row_today->vote}}</span></td>
-                                    @else
-                                        <td class="vo1{{$row_today->id}}"><span  abc="{{$row_today->id}}" >{{$row_today->vote}}</span></td>
-                                    @endif
-                                   
-                                 {{--devote start--}}
-                                 @if($check1==0)
-                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><span  devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
-                                    @else
-                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><span  un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
-                                    @endif    
-                                @else
-                                    @php
-                                        $see_check=App\Models\coin_vote::where('coin_id',$row_today->id)->where('user_id',$get_ses)->count();
-                                    @endphp
-                                    @if($see_check==0)
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></td>
-                                    @else
-                                        <td class="vo1{{$row_today->id}}"><span abc="{{$row_today->id}}">{{$row_today->vote}}</span></td>
-                                    @endif
-                                    {{--devote start--}}
-                                    @if($see_check==0)
-                                        <td style="text-align:center;" class="devote{{$row_today->id}}"><span devote="{{$row_today->id}}">{{$row_today->devote}}</span></td>
-                                    @else
-                                        <td style="text-align:center;" class="un_devote{{$row_today->id}}"><span un_devote="{{$row_today->id}}">{{$row_today->devote}}</span></td>
-                                    @endif    
-
-
-                                @endif
-                                <td> </td>
-                                <td>
-                                <button class="vote-btn">123</button>
-                                </td>
-                                <td>Info</td>
-                            </tr>
+                       
                         </tbody>
                 </table>
             </div>
