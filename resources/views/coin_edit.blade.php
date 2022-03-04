@@ -6,6 +6,10 @@ Add Coin
 @section('body_content')
 
 <style type="text/css">
+		tr td img {
+		width: 60px;
+		height: 60px;
+	}
 	.t1{
 		color:white;
 		width: 100%;
