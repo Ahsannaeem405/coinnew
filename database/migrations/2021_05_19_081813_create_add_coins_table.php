@@ -30,6 +30,7 @@ class CreateAddCoinsTable extends Migration
             $table->string('image')->nullable();
             $table->string('vote')->nullable();
             $table->string('devote')->nullable();
+            $table->string('permote')->nullable();
             $table->string('approve')->nullable();
             $table->string('audit')->nullable();
             $table->string('kyc')->nullable();
