@@ -693,8 +693,12 @@ class userController extends Controller
 
      }
 
-
-
+     public function searchCoin(Request $request)
+     {
+    
+      $searchCoin['searchCoin'] = add_coin::where('name', 'like', '%' . $request->searchCoin . '%')->get();
+      return view('searchCoin',$searchCoin);
+     }
 
 
 
