@@ -220,9 +220,10 @@
         @php
 
         $footer = App\Models\Footer::find(1);
-
         @endphp
-                            <div class="col-lg-4 offset-md-4  col-12">
+@if( isset($footer) && count($footer) >0)
+
+<div class="col-lg-4 offset-md-4  col-12">
                             </div>
                             <!-- <div class="col-lg-4 offset-md-4  col-12">
                                     <p style="color: white;text-align: center;"><b>
@@ -246,7 +247,7 @@
                         </div>
 </div>
 
-
+    @endif
              <!-- /.Cryonik-footer -->
 
 
