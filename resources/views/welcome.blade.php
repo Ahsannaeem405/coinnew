@@ -489,7 +489,7 @@ if it's not present, don't show loader */
                                 <td><a href="{{url('coins', ['id'=>$row_today->id])}}">Info</a></td>
                             </tr>
                         @endforeach
-                       
+
                         </tbody>
                 </table>
             </div>
