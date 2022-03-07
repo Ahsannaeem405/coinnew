@@ -73,11 +73,19 @@
                                 <div class="d-flex justify-content-between py-2 px-4">
                                     <div class=" header-search ">
                                         <div class="input-group">
-                                                <div class="input-group-prepend p-2">
-                                                    <img src="{{asset('upload/images/search.png')}}" alt="search-btn"/>
-                                                </div>
-                                            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
+                                            <form method="post" action="{{url('/user/searchCoin')}}">
+                                                @csrf
+                                       
+                                                <span class="input-group-text" id="basic-addon1">
+                                                   <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-search" aria-hidden="true">           </i>
+                                                       </button> 
+    
+                                         
+                                                </span>
+                                            </div>
+                                            <input type="text" name="searchCoin" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
+                                        </form>    
                                     </div>
                                         <div class="auth     d-flex">
 
@@ -160,12 +168,20 @@
                                     <div>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
+                                            <form method="post" action="{{url('searchCoin/searchCoin')}}">
+                                                @csrf
+                                       
                                             <span class="input-group-text" id="basic-addon1">
-                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                               <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-search" aria-hidden="true">
+                                                   </button> 
+
+                                                </i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
+                                        <input type="text" name="searchCoin" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
+                                    </form>    
+                                    </div>
                                     </div>
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/token')}}"  >Token</a></li>   
                                     <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/topgainer')}}">Topgainer</a></li> 
