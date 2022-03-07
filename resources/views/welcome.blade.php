@@ -413,6 +413,7 @@ if it's not present, don't show loader */
                         @php $al_kk++; @endphp
                         <tr>
                             <td>{{$i++}}</td>
+                  
                                 <td ><a href="{{url('coins', ['id'=>$row_today->id])}}" class="name"><img src="{{$row_today->logo_link}}"  ><b>{{$row_today->name}}</b></a></td>
                                 <td>
                                     <a href="{{url('coins', ['id'=>$row_today->id])}}">{{$row_today->sym}}</a>
@@ -489,7 +490,7 @@ if it's not present, don't show loader */
                                 <td><a href="{{url('coins', ['id'=>$row_today->id])}}">Info</a></td>
                             </tr>
                         @endforeach
-                       
+
                         </tbody>
                 </table>
             </div>
