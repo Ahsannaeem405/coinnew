@@ -36,6 +36,7 @@ class CreateAddCoinsTable extends Migration
             $table->string('kyc')->nullable();
             $table->string('cmc')->nullable();
             $table->string('checkbox')->nullable();
+            $table->string('address_name')->nullable();
             $table->timestamps();
         });
     }
