@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB; 
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $hash=\Hash::make('12345678');
+        DB::table('users')->insert([
+            ['name' => "admin",'email'=>'admin@gmail.com','role'=>'admin','number'=>'12345678','password'=>''.$hash.''],
+          
+            ]);
         // \App\Models\User::factory(10)->create();
     }
 }
