@@ -165,6 +165,7 @@ if it's not present, don't show loader */
                                 </div>
                                 <div class="col-12 d-none d-lg-block py-4">
                                     <div class="row justify-content-center ">
+                                        @if(isset($images2) && count($images2) > 0)
                                         @php
                                             $imgCount=count($images2); 
                                             @endphp
@@ -186,6 +187,7 @@ if it's not present, don't show loader */
                                             </div> 
                                            
                                           @endfor
+                                          @endif
                                         </div>
                                 
                                 </div>
