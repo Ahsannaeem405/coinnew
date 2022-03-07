@@ -80,9 +80,9 @@
                                         </div>
                                     </div>
                                         <div class="auth     d-flex">
-                                            <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/user/add_coin')}}">Add Coin</a>
 
                                         @if(Auth::user())
+                                        <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/user/add_coin')}}">Add Coin</a>
 
                                                     <a href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();

@@ -32,6 +32,7 @@ class RegisterController extends Controller
     // protected $redirectTo = RouteServiceProvider::;
     protected function redirectTo()
     {
+        // dd(auth()->user()->role);
     if (auth()->user()->role== 'user') {
         return 'user/add_coin';
     }
