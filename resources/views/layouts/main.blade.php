@@ -118,7 +118,7 @@
                                         </ul>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
-                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">BuyBol</a></li>       
+                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBol</a></li>       
                                             <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('contact_us')}}">Contact Us</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }}
@@ -173,7 +173,7 @@
                                     <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/new')}}">New</a></li>
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/audit')}}" >Audit</a></li>
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
-                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/')}}">BuyBol</a></li>       
+                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBol</a></li>       
                                     <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link"  href="{{url('contact_us')}}">Contact Us</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('/mytelegram')}}">Telegram</a></li>
@@ -225,7 +225,7 @@
 
         $footer = App\Models\Footer::find(1);
         @endphp
-@if( isset($footer) && count($footer) >0)
+@if( isset($footer))
 
 <div class="col-lg-4 offset-md-4  col-12">
                             </div>

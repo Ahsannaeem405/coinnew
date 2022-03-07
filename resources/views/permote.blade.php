@@ -207,16 +207,16 @@ Promotion
                                         @endphp
                                         @if($ses_check==0)
     
-                                            <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></a></td>
+                                            <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
                                         @else
-                                            <td style="text-align: center;" class="vo1{{$row_per->id}}"><span abc="{{$row_per->id}}">{{$row_per->vote}}</span></td>
+                                            <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1"  abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
     
                                         @endif
                                          {{--devote start--}}
                                          @if($ses_check==0)
-                                            <td style="text-align:center;" class="devote{{$row_per->id}}"><span devote="{{$row_per->id}}">{{$row_per->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
                                         @else
-                                            <td style="text-align:center;" class="un_devote{{$row_per->id}}"><span un_devote="{{$row_per->id}}">{{$row_per->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
                                         @endif    
                                     @endif
                                    

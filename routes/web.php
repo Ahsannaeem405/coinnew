@@ -152,13 +152,15 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
 
 
 
-
+Route::view('user/buy_bol','buy_bol');
 
 Route::prefix('/user')->middleware(['auth','user'])->group(function (){
 
     Route::get('/add_coin', function () {
         return view('add_coin');
         });
+      
+
     Route::post('/coin_save',[App\Http\Controllers\userController::class, 'coin_save']);
     Route::post('/com_save',[App\Http\Controllers\userController::class, 'com_save']);
     Route::post('/audit',[App\Http\Controllers\userController::class, 'audit']);
