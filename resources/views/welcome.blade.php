@@ -133,7 +133,7 @@ if it's not present, don't show loader */
     $images=App\Models\slider_img::orderBy('id', 'DESC')->get();
     $images3=App\Models\ban_slider_img::orderBy('id', 'DESC')->get();
     $images2=App\Models\add_coin::whereNotNull('permote')->whereNotNull('approve')->get();   
-  
+
     @endphp
 
     @if(Session::has('success'))
@@ -154,6 +154,7 @@ if it's not present, don't show loader */
                                 
                                 <div class="col-12 d-block d-lg-none ">
                                     <div class="owl-carousel owl-carousel2 owl-theme">
+                                        
                                         @foreach($images2 as $row_img3)
                                             <div class="item text-center mx-auto">  
                                             <a href="{{$row_img3->url}}" class="promoted-gig mx-auto">   
@@ -200,6 +201,7 @@ if it's not present, don't show loader */
                                                         <a href="{{url('coins', ['id'=>$row_img->id])}}">
                                                                 <img class="img-fluid rounded " src="{{url('images/'.$row_img->image)}}"></a>        
                                                     </div>
+                                                 
                                             @endforeach  
                                     </div>
                                 </div>
