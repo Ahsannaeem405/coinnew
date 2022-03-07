@@ -278,9 +278,9 @@ if it's not present, don't show loader */
            //$get_ip=DB::select("select * from ip_adds where ((created_at='$dt') and  ((user_id=$us)  or (user_id=$get_ses)))");
 
         @endphp
-        <div class="container-fluid cony mt-lg-5 mt-0 pr-0 pl-1 px-lg-5 pt-0 pt-lg-0">
+        <div class="container-fluid cony mt-lg-5 mt-0 px-1 px-lg-5 pt-0 pt-lg-0">
                 
-            <div class="table-responsive">
+            
                 <table class="w-100 mytable mt-5" id="promoted_1">    
                     <tr class="table-heading">
                         <td>Promoted</td>
@@ -293,9 +293,9 @@ if it's not present, don't show loader */
                             <th>Symbol</th>
                             <th>Price</th>
                             <th>Launch</th>
-                            <th>CMC | CG</th>
-                            <th>Audit</th>
-                            <th>KYC</th>
+                            <th class="mobile-hide">CMC | CG</th>
+                            <th class="mobile-hide">Audit</th>
+                            <th class="mobile-hide">KYC</th>
                             <th>vote</th>
                             <th>devote</th>
                             <th>more</th>
@@ -314,7 +314,7 @@ if it's not present, don't show loader */
                                 <td>{{ $i++}}</td>
                                 <td >
                                    
-                                         <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name"><img src="{{$row_per->logo_link}}" class=""><b>{{$row_per->name}}</b></a>
+                                         <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name"><img src="{{$row_per->logo_link}}" class="">{{$row_per->name}}</a>
                                   
                                    </td>
 
@@ -335,9 +335,9 @@ if it's not present, don't show loader */
                                     <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
 
                                 @endif
-                                <td>{{$row_per->cmc}}</td>
-                                <td><button class="vote-btn">{{$row_per->audit}}</button></td>
-                                <td><button class="vote-btn">{{$row_per->kyc}}</button></td>
+                                <td class="mobile-hide">{{$row_per->cmc}}</td>
+                                <td class="mobile-hide"><button class="vote-btn">{{$row_per->audit}}</button></td>
+                                <td class="mobile-hide"><button class="vote-btn">{{$row_per->kyc}}</button></td>
                                 @if(Auth::user())
                                     @php
 
@@ -384,8 +384,8 @@ if it's not present, don't show loader */
                 </table>
                     
                     
-            </div>
-            <div class="table-responsive">
+           
+            <div class="">
                 <table class="w-100 mytable mt-5"  id="myTable1">
                     <tr class="table-heading">
                         <td>Tokenlist</td>
@@ -397,9 +397,9 @@ if it's not present, don't show loader */
                             <th >Symbol</th>
                             <th>Price</th>
                             <th>Launch</th>
-                            <th>CMC | CG</th>
-                            <th>Audit</th>
-                            <th>KYC</th>
+                            <th  class="mobile-hide">CMC | CG</th>
+                            <th  class="mobile-hide">Audit</th>
+                            <th  class="mobile-hide">KYC</th>
                            <th>vote</th>
                             <th>devote</th>
                             <th>more</th>
@@ -413,7 +413,7 @@ if it's not present, don't show loader */
                         @php $al_kk++; @endphp
                         <tr>
                             <td>{{$i++}}</td>
-                                <td ><a href="{{url('coins', ['id'=>$row_today->id])}}" class="name"><img src="{{$row_today->logo_link}}"  ><b>{{$row_today->name}}</b></a></td>
+                                <td ><a href="{{url('coins', ['id'=>$row_today->id])}}" class="name"><img src="{{$row_today->logo_link}}"  >{{$row_today->name}}</a></td>
                                 <td>
                                     <a href="{{url('coins', ['id'=>$row_today->id])}}">{{$row_today->sym}}</a>
                                   
@@ -439,9 +439,9 @@ if it's not present, don't show loader */
 
                                     }
                                 @endphp
-                                <td>{{$row_today->cmc}}</td>
-                                <td><button class="vote-btn">{{$row_today->audit}}</button></td>
-                                <td><button class="vote-btn">{{$row_today->kyc}}</button></td>
+                                <td  class="mobile-hide">{{$row_today->cmc}}</td>
+                                <td  class="mobile-hide"><button class="vote-btn">{{$row_today->audit}}</button></td>
+                                <td  class="mobile-hide"><button class="vote-btn">{{$row_today->kyc}}</button></td>
                                 @if(Auth::user())
                                     @php
 
