@@ -173,9 +173,9 @@ Promotion
                                         <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
     
                                     @endif
-                                    <td></td>
-                                    <td><button class="vote-btn">321</button></td>
-                                    <td><button class="vote-btn">321</button></td>
+                                    <td>{{$row_per->cmc}}</td>
+                                    <td><button class="vote-btn">{{$row_per->audit}}</button></td>
+                                    <td><button class="vote-btn">{{$row_per->kyc}}</button></td>
                                     @if(Auth::user())
                                         @php
     

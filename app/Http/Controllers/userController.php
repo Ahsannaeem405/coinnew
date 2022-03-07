@@ -53,6 +53,9 @@ class userController extends Controller
       $coinSave->vote= 0;
       $coinSave->devote= 0;
       $coinSave->chart= $request->chart;
+      $coinSave->cmc= $request->cmc;
+      $coinSave->kyc= $request->kyc;
+      $coinSave->audit= $request->audit;
 
       if(isset($request->image))
         {

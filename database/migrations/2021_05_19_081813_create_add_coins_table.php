@@ -31,6 +31,9 @@ class CreateAddCoinsTable extends Migration
             $table->string('vote')->nullable();
             $table->string('devote')->nullable();
             $table->string('approve')->nullable();
+            $table->string('audit')->nullable();
+            $table->string('kyc')->nullable();
+            $table->string('cmc')->nullable();
             $table->timestamps();
         });
     }

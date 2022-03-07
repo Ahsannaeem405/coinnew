@@ -6,7 +6,6 @@ Add Coin
 
 <style type="text/css">
 	.t1{
-		color:white;
 		width: 100%;
 	    height:45px;
 	    border: 1px solid #edeef1;
@@ -113,6 +112,11 @@ Add Coin
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Image <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 	
 								<input type="file"  class="t1" name="image" required>
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Audit <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="text"  class="t1" name="audit" required>
+								
+							
 
 					    	</div>
 
@@ -170,8 +174,12 @@ Add Coin
 							    <label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Chart</label>
 							    <input type="text" placeholder="e.g. https://chart.com" 
 							    class="t1" name="chart">
-							   
-							    
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">CMC <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="text"  class="t1" name="cmc" required>
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">KYC <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="text"  class="t1" name="kyc" required>
 					    		
 					    	</div>
 					    </div>

@@ -79,20 +79,21 @@
                                             <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
-                                    <div class="auth d-flex">
-                                    @if(Auth::user())
-                                            
+                                        <div class="auth     d-flex">
+                                        @if(Auth::user())
+                                        <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/add_coin')}}">Add Coin</a>
+
                                                     <a href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();"
-                                                        class="">{{ __('Logout') }}</a>
+                                                        class="nav-link">{{ __('Logout') }}</a>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none ">
                                                             @csrf
                                                     </form>
 
                                                 @else
                                                 <a  href="{{url('/log_in')}}" class="{{ (request()->is('log_in')) ? 'active' : '' }} nav-link ">Log in</a>
-                                                <a href="{{url('/regis')}}" class="nav-link {{ (request()->is('regis')) ? 'active' : '' }}">Sign in</a>
+                                                <a href="{{url('/regis')}}" class="nav-link {{ (request()->is('regis')) ? 'active' : '' }}">Sign Up</a>
                                                 @endif
                                         
                                         </div>
@@ -177,7 +178,11 @@
                                     <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('/mytelegram')}}">Telegram</a></li>
 
                                     @if(Auth::user() and Auth::user()->role=='admin')
+
+
                                             <li class="nav-item"><a class="nav-link {{ (request()->is('admins/index')) ? 'active' : '' }}" href="{{url('admins/index')}}">Admin Home</a></li>
+                                            <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/add_coin')}}">Add Coin</a></li>
+
                                             @endif
 
                                             @if(Auth::user())
@@ -193,7 +198,7 @@
                                             </li>
                                             @else
                                             <li class="nav-item"><a  href="{{url('/log_in')}}" class="{{ (request()->is('log_in')) ? 'active' : '' }} nav-link ">Log in</a></li>
-                                            <li class="nav-item"><a href="{{url('/regis')}}" class="nav-link {{ (request()->is('regis')) ? 'active' : '' }}">Register</a></li>
+                                            <li class="nav-item"><a href="{{url('/regis')}}" class="nav-link {{ (request()->is('regis')) ? 'active' : '' }}">Sign Up</a></li>
                                             @endif
                                 </ul></div>
                             </div>
@@ -282,6 +287,420 @@
 
         <!-- owl carousal JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+
+
+    
+
+
+
+
+
+
+
+
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+            var set=30;
+
+                setInterval(function(){
+                    set+=1;
+                    console.log(set);
+
+                   
+                }, 1000);
+
+            $(document).on("click",'.vo1' , function(){
+                
+                
+                if(set>=30)
+                {
+                var ids=$(this).attr('abc');
+                //alert(ids1)
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/vote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                        $('.vo1'+ids).empty();
+                        var op =" ";
+                 
+                        op+='<button class="btn btn-sm sbn btn-primary un_vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+                        $('.vo1'+ids).append(op);
+                        if(data.dat > 0)
+                        {
+                            $('.devote'+ids).empty();
+
+                        var d =" ";
+                        d+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
+                        $('.devote'+ids).append(d);
+                        //alert('vote ='+data.devote);
+                        }
+
+                    },
+                });
+                set=0;
+            }
+            else{
+                alert('You Have To wait for 30s for next vote');
+            }
+            });
+       
+            $(document).on("click" ,'.un_vo1', function(){
+                
+
+            if(set>=30)
+            {
+                var ids=$(this).attr('abc');
+                //alert(ids1)
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/un_vote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                        
+                        $('.vo1'+ids).empty();
+                        var op =" ";
+                        op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+                        $('.vo1'+ids).append(op);
+                        // $('.devote'+ids).empty();
+                        // var d =" ";
+                        // d+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.devote+'</button>';
+                        // $('.devote'+ids).append(d);
+                        // $('.vo1'+ids).text(data.devote);
+                        // alert(data.devote);
+
+                    },
+                });
+                set=0;
+            }
+            else{
+                alert('You Have To wait for 30s for next vote');
+            }
+            });
+
+            $(document).on("click",'.devote' , function(){
+                
+            
+
+                if(set>=30)
+                {
+                var ids=$(this).attr('devote');
+            
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/devote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                     
+
+                        $('.devote'+ids).empty();
+                        var op =" ";
+                        op+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
+                        $('.devote'+ids).append(op);
+                        if(data.dat > 0)
+                        {
+                        $('.vo1'+ids).empty();
+                        var v =" ";
+                        v+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.vote+'</button>';
+                        $('.vo1'+ids).append(v);
+                        //alert('devote ='+data.vote);
+
+                    //     $('.devote'+ids).text(data.vote);
+                    //    alert(data.vote);
+                        }
+
+                    },
+                });
+                set=0;
+            }
+            else{
+                alert('You Have To wait for 30s for next vote');
+            }
+            });
+
+            $(document).on("click",'.un_devote' , function(){
+                
+                
+                if(set>=30)
+                {
+                var ids=$(this).attr('un_devote');
+              
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/un_devote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                        $('.devote'+ids).empty();
+                        var op1 =" ";
+                        op1+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.dat+'</button>';
+                        $('.devote'+ids).append(op1);
+
+
+
+                    },
+                });
+                set=0;
+            }
+            else{
+                alert('You Have To wait for 30s for next vote');
+            }
+            });
+            
+            $(document).on("click" ,'.set1', function(){
+
+           
+                var ids=$(this).attr('last_id');
+                var no_time=$(this).attr('no_time');
+               
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/user/get_see_all') }}",
+
+                    data: {'id':no_time},
+
+                    success: function (data) {
+                    $('.cap1').empty();
+                    $(".t1").append(data);
+
+
+                    },
+                  });
+                
+              });
+            $(document).on("click" ,'.set2', function(){
+                $("#myTable4").hide();
+                $(".set2").hide();
+                document.getElementById("myTable41").style.display = "inline-table";
+
+
+            });
+            $(document).on("click" ,'.set3', function(){
+               var ids=$(this).attr('last_id');
+                
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/user/get_see_all_new') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                    $('.cap_new1').remove();
+                    $(".t_new1").append(data);
+
+
+                    },
+                  });
+
+
+            });
+            
+               $(document).on("click" ,'.set5', function(){
+                $("#promoted_1").hide();
+                $(".set5").hide();
+                document.getElementById("promoted_2").style.display = "inline-table";
+
+
+            });
+              $(document).on("click" ,'.set15', function(){
+                $("#myTable1").hide();
+                $("#myInput1").hide();
+
+                
+                $(".set15").hide();
+                document.getElementById("myTable11").style.display = "inline-table";
+                document.getElementById("myInput11").style.display = "inline-table";
+
+
+
+            });
+            
+            $(document).on("click" ,'.blue', function(){
+                $("#myInput1").hide();
+                $("#myInput11").hide();
+                $("#myInput4").hide();
+                 $("#myInput3").hide();
+                
+                
+                document.getElementById("myInput2").style.display = "inline-table";
+              
+            });
+             $(document).on("click" ,'.new', function(){
+                $("#myInput1").hide();
+                $("#myInput11").hide();
+                $("#myInput2").hide();
+                $("#myInput4").hide();
+                
+                document.getElementById("myInput3").style.display = "inline-table";
+              
+            });
+            $(document).on("click" ,'.pre', function(){
+                $("#myInput1").hide();
+                $("#myInput11").hide();
+                $("#myInput2").hide();
+                $("#myInput3").hide();
+                document.getElementById("myInput4").style.display = "inline-table";
+            });
+        });
+    </script>
+    <script>
+        function myFunction_s1() {
+            var x = document.getElementById("mydiv1");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function myFunction_s2() {
+            var x = document.getElementById("mydiv2");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function myFunction_s3() {
+            var x = document.getElementById("mydiv3");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function myFunction_s4() {
+            var x = document.getElementById("mydiv4");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            
+
+         
+            
+
+
+            $("#myInput1").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".myTable1 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            $("#myInput11").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".myTable2 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            $("#myInput2").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".myTable3 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            $("#myInput3").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".myTable4 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+             $("#myInput4").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".myTable5 tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <script>
+        try {
+            fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+                return true;
+            }).catch(function(e) {
+                var carbonScript = document.createElement("script");
+                carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+                carbonScript.id = "_carbonads_js";
+                document.getElementById("carbon-block").appendChild(carbonScript);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    </script>
+    <!--scripts loaded here-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('carousel.js')}}"></script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+ <script>
+   function onSubmit(token) {
+      
+     document.getElementById("demo-form").submit();
+   }
+ </script>
+ <script src="https://www.google.com/recaptcha/api.js?render=6LeU4hYcAAAAAFmezD07HzyttdxsoQa1il_qynJi"></script>
+    <script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6LeU4hYcAAAAAOS2FHGn-OF0mbZVmqHkGJXt7Ufi',{action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
+
         <script>
             $(".navbar-toggler").click(function(){
                 $(".bsnav-mobile").toggleClass("in");
