@@ -55,7 +55,7 @@ New
            $this_week_ed = date("Y-m-d",$sunday);
            $mon_start=date('Y-m-01', strtotime($dt));
            $mon_end=date('Y-m-t', strtotime($dt));
-            $per_coin=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->paginate(10);
+            $per_coin=App\Models\add_coin::orderBy('vote', 'DESC')->paginate(10);
             $per_coin2=App\Models\add_coin::whereNotNull('approve')->whereNotNull('permote')->orderBy('vote', 'DESC')->get();
             if(Auth::user())
             {
