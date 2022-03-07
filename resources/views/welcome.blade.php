@@ -247,7 +247,12 @@ if it's not present, don't show loader */
             }
             if(Auth::user())
             {
-            $your_coin=App\Models\add_coin::where('created_by',Auth::user()->id)->get();
+                $check_coin=App\Models\add_coin::get();
+                if(isset( $check_coin) && count( $check_coin)>0)
+                {
+                    $your_coin=App\Models\add_coin::where('created_by',Auth::user()->id)->get();
+
+                }
             }
             $today_coin=App\Models\add_coin::whereNotNull('approve')->orderBy('vote', 'DESC')->paginate(10);
             $today_coin_all=App\Models\add_coin::whereNotNull('approve')->orderBy('vote', 'DESC')->paginate(80);
@@ -818,7 +823,7 @@ if it's not present, don't show loader */
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                    @if(isset($your_coin) && count($your_coin) >0)
                                 @foreach($your_coin as $row_your)
                                     <tr>
                                         <td class="tddd"><a href="{{url('coins', ['id'=>$row_your->id])}}"><img src="{{$row_your->logo_link}}" >{{$row_your->name}}</a></td>
@@ -881,7 +886,7 @@ if it's not present, don't show loader */
 
                                     </tr>
                                 @endforeach
-
+                                    @endif
                                 </tbody>
                         </table>
                     </div>

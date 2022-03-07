@@ -81,7 +81,7 @@
                                     </div>
                                         <div class="auth     d-flex">
                                         @if(Auth::user())
-                                        <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/add_coin')}}">Add Coin</a>
+                                        <a class="nav-link" href="{{url('user/add_coin')}}">Add Coin</a>
 
                                                     <a href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
@@ -176,12 +176,16 @@
                                     <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link"  href="{{url('contact_us')}}">Contact Us</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('/mytelegram')}}">Telegram</a></li>
+                                    @if(Auth::user())
 
+
+                                    <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('user/add_coin')}}">Add Coin</a>
+                                    
+                                    @endif
                                     @if(Auth::user() and Auth::user()->role=='admin')
 
 
                                             <li class="nav-item"><a class="nav-link {{ (request()->is('admins/index')) ? 'active' : '' }}" href="{{url('admins/index')}}">Admin Home</a></li>
-                                            <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/add_coin')}}">Add Coin</a></li>
 
                                             @endif
 
