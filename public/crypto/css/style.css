@@ -1138,6 +1138,15 @@ body .chosen-container .chosen-results li.highlighted {background:transparent;}
   width: 35px;
   height: auto;
 }
+.header-search .input-group-text{
+  border: none;
+  border-radius: 0px;
+  background-color: transparent;
+  color: #fff;
+}
+.header-search  button{
+  background-color: transparent;
+}
 .header-search .form-control{
   width: 250px;
   background-color: #8a8989;

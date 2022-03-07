@@ -143,7 +143,7 @@ Token
                             @elseif($row_per->launch_date==$dt)
                                 <td> Launch Today</td>
                             @else
-                                <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
+                                <td ><a href="{{url('coins', ['id'=>$row_per->id])}}"> {{$diff_row_per}} days</a></td>
 
                             @endif
                             <td class="mobile-hide">{{$row_per->cmc}}</td>
@@ -240,7 +240,7 @@ Token
                                 @elseif($row_per->launch_date==$dt)
                                     <td class="tdd"> Launch Today</td>
                                 @else
-                                    <td class="tdd"><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
+                                    <td class="tdd"><a href="{{url('coins', ['id'=>$row_per->id])}}"> {{$diff_row_per}} days</a></td>
 
                                 @endif
 

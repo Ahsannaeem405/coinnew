@@ -72,25 +72,23 @@
                             <div class="d-none d-lg-block">
                                 <div class="d-flex justify-content-between py-2 px-4">
                                     <div class=" header-search ">
-                                        <div class="input-group">
-                                            <form method="post" action="{{url('/user/searchCoin')}}">
-                                                @csrf
-                                       
-                                                <span class="input-group-text" id="basic-addon1">
-                                                   <button type="submit" class="btn btn-primary">
-                                                    <i class="fa fa-search" aria-hidden="true">           </i>
-                                                       </button> 
-    
-                                         
-                                                </span>
+                                        <form method="post" action="{{url('/user/searchCoin')}}">
+                                                    @csrf
+                                        
+                                            <div class="input-group">
+                                                    <button type="submit" class="">
+                                                        <span class="input-group-text" id="basic-addon1">
+                                                            <i class="fa fa-search" aria-hidden="true">           </i>    
+                                                        </span>
+                                                    </button> 
+                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                             </div>
-                                            <input type="text" name="searchCoin" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
-                                        </form>    
-                                    </div>
+                                        </from>
+                                    </div>   
                                         <div class="auth     d-flex">
 
-                                        @if(Auth::user())
-                                        <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/user/add_coin')}}">Add Coin</a>
+                                            @if(Auth::user())
+                                            <a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/user/add_coin')}}">Add Coin</a>
 
                                                     <a href="{{ route('logout') }}"
                                                         onclick="event.preventDefault();
@@ -126,7 +124,7 @@
                                         </ul>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
-                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBol</a></li>       
+                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBot</a></li>       
                                             <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('contact_us')}}">Contact Us</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }}
@@ -170,7 +168,7 @@
                                         <div class="input-group-prepend">
                                             <form method="post" action="{{url('searchCoin/searchCoin')}}">
                                                 @csrf
-                                       
+
                                             <span class="input-group-text" id="basic-addon1">
                                                <button type="submit" class="btn btn-primary">
                                                 <i class="fa fa-search" aria-hidden="true">
@@ -309,29 +307,11 @@
         <!-- owl carousal JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
-
-
-    
-
-
-
-
-
-
-
-
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-
-
     <script type="text/javascript">
     
         $(document).ready(function(){

@@ -137,7 +137,7 @@ Topgainer
                                     @elseif($row_today->launch_date==$dt)
                                         <td >Launch Today</td>
                                     @else
-                                        <td ><a href="{{url('coins', ['id'=>$row_today->id])}}">Launch in {{$diff_row_today}} days</a></td>
+                                        <td ><a href="{{url('coins', ['id'=>$row_today->id])}}"> {{$diff_row_today}} days</a></td>
     
                                     @endif
                                     @php
