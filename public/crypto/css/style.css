@@ -1397,3 +1397,14 @@ table.mytable td {
     display: none;
   }
 }
+.mobile-bar-search{
+  margin-bottom: 0 !important;
+  background-color: transparent !important;
+  color: black !important;
+  border: none !important;
+}
+.mobile-bar-search .input-group-text{
+  border: none !important;
+  background-color: transparent !important;
+  border-radius: none !important;
+}

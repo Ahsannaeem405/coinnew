@@ -72,18 +72,19 @@
                             <div class="d-none d-lg-block">
                                 <div class="d-flex justify-content-between py-2 px-4">
                                     <div class=" header-search ">
-                                        <form method="post" action="{{url('/user/searchCoin')}}">
-                                                    @csrf
-                                        
+                                         
                                             <div class="input-group">
+                                                <form method="post" action="{{url('/user/searchCoin')}}">
+                                                    @csrf
                                                     <button type="submit" class="">
                                                         <span class="input-group-text" id="basic-addon1">
-                                                            <i class="fa fa-search" aria-hidden="true">           </i>    
+                                                            <i class="fa fa-search" aria-hidden="true"></i>    
                                                         </span>
                                                     </button> 
                                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                </form> 
                                             </div>
-                                        </from>
+                                       
                                     </div>   
                                         <div class="auth     d-flex">
 
@@ -112,7 +113,6 @@
                                 <!-- ================= Theme Menu Wrapper =================== -->
                                 <div class="navbar navbar-expand-lg bsnav bsnav-sticky-slide">
                                     <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
-                                    
                                     <div class="collapse navbar-collapse py-2">
                                         <ul class="navbar-nav mr-auto ">
                                             <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/token')}}" >Token</a></li>
@@ -164,23 +164,21 @@
                                 <div class="bsnav-mobile-overlay"></div>
                                 <div class="navbar"><ul class="navbar-nav navbar-mobile mr-0">
                                     <div>
-                                    <div class="input-group">
+                                    
+                                        <form method="post" action="{{url('/user/searchCoin')}}">
+                                                    @csrf
+                                                    <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <form method="post" action="{{url('searchCoin/searchCoin')}}">
-                                                @csrf
-
-                                            <span class="input-group-text" id="basic-addon1">
-                                               <button type="submit" class="btn btn-primary">
-                                                <i class="fa fa-search" aria-hidden="true">
-                                                   </button> 
-
-                                                </i>
-                                            </span>
+                                            <button class="mobile-bar-search" type="submit">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>    
+                                                </span>
+                                            </button> 
                                         </div>
-                                        <input type="text" name="searchCoin" class="form-control" placeholder="Search here" aria-label="Username" aria-describedby="basic-addon1">
-                                    </form>    
-                                    </div>
-                                    </div>
+                                        <input type="text" class="form-control" placeholder="Seacrh" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                        </form>
+                                    
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/token')}}"  >Token</a></li>   
                                     <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/topgainer')}}">Topgainer</a></li> 
                                     <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/promote')}}">Promoted</a></li>  
