@@ -73,17 +73,19 @@
                                 <div class="d-flex justify-content-between py-2 px-4">
                                     <div class=" header-search ">
                                          
-                                            <div class="input-group">
+                                            
                                                 <form method="post" action="{{url('/user/searchCoin')}}">
                                                     @csrf
+                                                    <div class="input-group">
                                                     <button type="submit" class="">
                                                         <span class="input-group-text" id="basic-addon1">
                                                             <i class="fa fa-search" aria-hidden="true"></i>    
                                                         </span>
                                                     </button> 
                                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    </div>
                                                 </form> 
-                                            </div>
+                                            
                                        
                                     </div>   
                                         <div class="auth     d-flex">
@@ -162,12 +164,12 @@
                             </div>
                             <div class="bsnav-mobile">
                                 <div class="bsnav-mobile-overlay"></div>
-                                <div class="navbar"><ul class="navbar-nav navbar-mobile mr-0">
+                                <div class="navbar "><ul class="navbar-nav navbar-mobile mr-0">
                                     <div>
                                     
                                         <form method="post" action="{{url('/user/searchCoin')}}">
                                                     @csrf
-                                                    <div class="input-group">
+                                                    <div class="input-group mt-4">
                                         <div class="input-group-prepend">
                                             <button class="mobile-bar-search" type="submit">
                                                 <span class="input-group-text" id="basic-addon1">
