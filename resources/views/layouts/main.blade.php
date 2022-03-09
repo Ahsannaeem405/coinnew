@@ -348,6 +348,7 @@
           grecaptcha.render('html_element', {
             'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b'
           });
+          $('#reportmsg').modal('hide');
         };
       </script>
     <script type="text/javascript">
