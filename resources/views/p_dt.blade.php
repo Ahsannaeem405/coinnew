@@ -467,11 +467,8 @@ Add Coin
                   <th >Symbol</th>
                   <th>Price</th>
                   <th>Launch</th>
-                  <th class="mobile-hide">CMC | CG</th>
-                  <th class="mobile-hide">Audit</th>
-                  <th class="mobile-hide">KYC</th>
+                
                   <th>vote</th>
-                  <th>upvote</th>
                   <th>more</th>
               </tr>
           </thead>
@@ -509,9 +506,7 @@ Add Coin
                       <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">{{$diff_row_per}} days</a></td>
 
                   @endif
-                  <td class="mobile-hide">{{$row_per->cmc}}</td>
-                  <td class="mobile-hide"><button class="vote-btn">{{$row_per->audit}}</button></td>
-                  <td class="mobile-hide"><button class="vote-btn">{{$row_per->kyc}}</button></td>
+                
                   @if(Auth::user())
                       @php
 
@@ -527,12 +522,12 @@ Add Coin
                       @else
                           <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
                       @endif
-                       {{--devote start--}}
+                       {{--devote start
                        @if($check==0)
                           <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-md-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
                       @else
                           <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-md-6" un_devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
-                      @endif    
+                      @endif   --}} 
                   @else
                       @php
                           $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
@@ -542,12 +537,12 @@ Add Coin
                       @else
                           <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
                       @endif
-                       {{--devote start--}}
+                       {{--devote start
                        @if($check==0)
                           <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-md-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
                       @else
                           <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-md-6" un_devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
-                      @endif    
+                      @endif    --}}
                   @endif
                  
                   <td>  <a href="{{url('coins', ['id'=>$row_per->id])}}">Info</a></td>

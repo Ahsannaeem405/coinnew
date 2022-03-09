@@ -44,7 +44,7 @@
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YR4VGQHK42"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -82,7 +82,7 @@
                                                             <i class="fa fa-search" aria-hidden="true"></i>    
                                                         </span>
                                                     </button> 
-                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="text" name="searchCoin"  class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                                                     </div>
                                                 </form> 
                                             
@@ -126,7 +126,7 @@
                                         </ul>
                                         <ul class="navbar-nav ml-auto">
                                             <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
-                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBot</a></li>       
+                                            <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bot')}}">BuyBot</a></li>       
                                             <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('contact_us')}}">Contact Us</a></li>
                                             <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }}
@@ -166,18 +166,18 @@
                                 <div class="bsnav-mobile-overlay"></div>
                                 <div class="navbar "><ul class="navbar-nav navbar-mobile mr-0">
                                     <div>
-                                    
+            
                                         <form method="post" action="{{url('/user/searchCoin')}}">
                                                     @csrf
                                                     <div class="input-group mt-4">
                                         <div class="input-group-prepend">
-                                            <button class="mobile-bar-search" type="submit">
+                                            <button  type="submit" class="mobile-bar-search">
                                                 <span class="input-group-text" id="basic-addon1">
                                                     <i class="fa fa-search" aria-hidden="true"></i>    
                                                 </span>
                                             </button> 
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Seacrh" aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" name="searchCoin" class="form-control" placeholder="Seacrh" >
                                         </div>
                                         </form>
                                     
@@ -187,7 +187,7 @@
                                     <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link" href="{{url('/new')}}">New</a></li>
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/audit')}}" >Audit</a></li>
                                     <li class="nav-item "><a class="{{ (request()->is('/')) ? 'active' : '' }} nav-link" href="{{url('/KYC')}}" >KYC</a></li>
-                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bol')}}">BuyBol</a></li>       
+                                    <li class="nav-item"><a class="{{ (request()->is('admins/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/user/buy_bot')}}">BuyBot</a></li>       
                                     <li class="nav-item"><a class="{{ (request()->is('user/add_coin')) ? 'active' : '' }} nav-link" href="{{url('/FAQ')}}">FAQ</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('contact_us')) ? 'active' : '' }} nav-link"  href="{{url('contact_us')}}">Contact Us</a></li>
                                     <li class="nav-item"><a class="{{ (request()->is('newsletter')) ? 'active' : '' }} nav-link  " href="{{url('/mytelegram')}}">Telegram</a></li>
@@ -268,7 +268,36 @@
     @endif
              <!-- /.Cryonik-footer -->
 
+<!-- Button trigger modal -->
 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="reportmsg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="?" method="POST">
+                <div id="html_element"></div>
+                <br>
+                <input type="submit" value="Submit">
+              </form>
+              <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                  async defer>
+              </script>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
         <!-- Optional JavaScript _____________________________  -->
@@ -312,6 +341,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+
+
+    <script type="text/javascript">
+        var onloadCallback = function() {
+          grecaptcha.render('html_element', {
+            'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b'
+          });
+        };
+      </script>
     <script type="text/javascript">
     
         $(document).ready(function(){
@@ -324,9 +362,10 @@
                 }, 1000);
 
             $(document).on("click",'.vo1' , function(){
+                $('#reportmsg').modal('show');
+
                 
-                
-                if(set>=30)
+                if(set>=1)
                 {
                 var ids=$(this).attr('abc');
                 //alert(ids1)
@@ -365,7 +404,7 @@
             $(document).on("click" ,'.un_vo1', function(){
                 
 
-            if(set>=30)
+            if(set>=1)
             {
                 var ids=$(this).attr('abc');
                 //alert(ids1)
@@ -400,9 +439,9 @@
 
             $(document).on("click",'.devote' , function(){
                 
-            
 
-                if(set>=30)
+
+                if(set>=1)
                 {
                 var ids=$(this).attr('devote');
             
@@ -443,7 +482,7 @@
             $(document).on("click",'.un_devote' , function(){
                 
                 
-                if(set>=30)
+                if(set>=1)
                 {
                 var ids=$(this).attr('un_devote');
               

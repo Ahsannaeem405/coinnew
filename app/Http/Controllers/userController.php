@@ -98,6 +98,8 @@ class userController extends Controller
        
        $get_vote_val=add_coin::where('id',$id)->value('devote');
 
+       $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->first();
+ 
        $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->sum('devote');
        $data=add_coin::find($id);
       // dd($userVote);

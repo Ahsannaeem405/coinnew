@@ -152,7 +152,7 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
 
 
 
-Route::view('user/buy_bol','buy_bol');
+Route::view('user/buy_bot','buy_bot');
 Route::post('user/searchCoin',[App\Http\Controllers\userController::class,'searchCoin']);
 
 Route::prefix('/user')->middleware(['auth','user'])->group(function (){
