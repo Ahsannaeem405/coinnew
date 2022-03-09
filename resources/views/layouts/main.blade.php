@@ -352,7 +352,7 @@
 
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
-};
+            };
       </script>
     <script type="text/javascript">
     
@@ -369,7 +369,7 @@
                 $('#reportmsg').modal('show');
 
                 
-                if(set>=1)
+                if(set>=30)
                 {
                 var ids=$(this).attr('abc');
                 //alert(ids1)
@@ -408,7 +408,7 @@
             $(document).on("click" ,'.un_vo1', function(){
                 
 
-            if(set>=1)
+            if(set>=30)
             {
                 var ids=$(this).attr('abc');
                 //alert(ids1)
