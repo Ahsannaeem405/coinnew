@@ -342,10 +342,11 @@
 
 
     <script type="text/javascript">
-        var onloadCallback = function() {
+        var onloadCallback = function(response) {
           grecaptcha.render('html_element', {
             'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b'
           });
+          alert(response);
        
         };
       </script>
