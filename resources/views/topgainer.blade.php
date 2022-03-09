@@ -107,9 +107,9 @@ Topgainer
                                 <th >Symbol</th>
                                 <th>Price</th>
                                 <th>Launch</th>
-                                <th>CMC | CG</th>
-                                <th>Audit</th>
-                                <th>KYC</th>
+                                <th class="mobile-hide">CMC | CG</th>
+                                <th class="mobile-hide">Audit</th>
+                                <th class="mobile-hide">KYC</th>
                                <th>vote</th>
                                 <th>devote</th>
                                 <th>more</th>
@@ -137,7 +137,7 @@ Topgainer
                                     @elseif($row_today->launch_date==$dt)
                                         <td >Launch Today</td>
                                     @else
-                                        <td ><a href="{{url('coins', ['id'=>$row_today->id])}}">Launch in {{$diff_row_today}} days</a></td>
+                                        <td ><a href="{{url('coins', ['id'=>$row_today->id])}}"> {{$diff_row_today}} days</a></td>
     
                                     @endif
                                     @php
@@ -149,9 +149,9 @@ Topgainer
     
                                         }
                                     @endphp
-                                     <td>{{$row_today->cmc}}</td>
-                                     <td><button class="vote-btn">{{$row_today->audit}}</button></td>
-                                     <td><button class="vote-btn">{{$row_today->kyc}}</button></td>
+                                     <td class="mobile-hide">{{$row_today->cmc}}</td>
+                                     <td class="mobile-hide"><button class="vote-btn">{{$row_today->audit}}</button></td>
+                                     <td class="mobile-hide"><button class="vote-btn">{{$row_today->kyc}}</button></td>
                                     @if(Auth::user())
                                         @php
     
@@ -163,15 +163,15 @@ Topgainer
                                         @endphp
     
                                         @if($check==0)
-                                            <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></a></td>
+                                            <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></a></td>
                                         @else
-                                            <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></td>
+                                            <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></td>
                                         @endif
                                          {{--devote start--}}
                                          @if($check==0)
-                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  " devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                         @else
-                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote" un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                         @endif    
                                     @else
                                         @php
@@ -183,16 +183,16 @@ Topgainer
                                         @endphp
                                         @if($ses_check==0)
     
-                                            <td style="text-align: center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1" abc="{{$row_today->id}}">{{$row_today->vote}}</button></td>
+                                            <td style="text-align: center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_today->id}}">{{$row_today->vote}}</button></td>
                                         @else
-                                            <td style="text-align: center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1" abc="{{$row_today->id}}">{{$row_today->vote}}</button></td>
+                                            <td style="text-align: center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_today->id}}">{{$row_today->vote}}</button></td>
     
                                         @endif
                                          {{--devote start--}}
                                          @if($ses_check==0)
-                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
+                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
                                         @else
-                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
+                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" un_devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
                                         @endif    
                                     @endif
                                    
@@ -251,7 +251,7 @@ Topgainer
                         $('.devote'+ids).empty();
 
                     var d =" ";
-                    d+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
+                    d+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
                     $('.devote'+ids).append(d);
                     //alert('vote ='+data.devote);
                     }
@@ -320,13 +320,13 @@ Topgainer
 
                     $('.devote'+ids).empty();
                     var op =" ";
-                    op+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
+                    op+='<button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
                     $('.devote'+ids).append(op);
                     if(data.dat > 0)
                     {
                     $('.vo1'+ids).empty();
                     var v =" ";
-                    v+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.vote+'</button>';
+                    v+='<button class="btn btn-sm sbn btn-outline-primary vo1 col-12 col-lg-6" type="button" abc='+data.id+'>'+data.vote+'</button>';
                     $('.vo1'+ids).append(v);
                     //alert('devote ='+data.vote);
 
@@ -360,7 +360,7 @@ Topgainer
                 success: function (data) {
                     $('.devote'+ids).empty();
                     var op1 =" ";
-                    op1+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.dat+'</button>';
+                    op1+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.dat+'</button>';
                     $('.devote'+ids).append(op1);
 
 

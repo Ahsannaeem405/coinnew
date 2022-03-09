@@ -9,7 +9,7 @@ New
 			<div class="contact-div p-5">
 				<center>
 					<div class="form-wrapper mt-2">
-							<h2 class="title"><span><i class="fa fa-telegram" aria-hidden="true"></i></span>My Channel</h2>
+							<h2 class="title">My Telegram Channel</h2>
                             <a class="tele-card mt-5" href="#">
                                 <img src="https://images.unsplash.com/photo-1646295204041-4faac1c2adc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="channel-img" class="img-fluid">
                                 <div class="card-details">
