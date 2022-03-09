@@ -351,7 +351,7 @@
         };
 
         var correctCaptcha = function(response) {
-    alert(response);
+            $('#reportmsg').modal('hide');
 };
       </script>
     <script type="text/javascript">
