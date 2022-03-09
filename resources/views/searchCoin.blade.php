@@ -97,7 +97,7 @@ Topgainer
         </div>
         @if(isset($searchCoin) && count($searchCoin)>0)
             <div class="container-fluid">
-                <div class="table-responsive">
+                
                     <table class="w-100 mytable mt-5"  id="myTable1">
                         <tr class="table-heading">
                             <td>Tokenlist</td>
@@ -109,9 +109,9 @@ Topgainer
                                 <th >Symbol</th>
                                 <th>Price</th>
                                 <th>Launch</th>
-                                <th>CMC | CG</th>
-                                <th>Audit</th>
-                                <th>KYC</th>
+                                <th class="mobile-hide">CMC | CG</th>
+                                <th class="mobile-hide">Audit</th>
+                                <th class="mobile-hide">KYC</th>
                                <th>vote</th>
                                 <th>devote</th>
                                 <th>more</th>
@@ -152,9 +152,9 @@ Topgainer
     
                                         }
                                     @endphp
-                                     <td>{{$row_today->cmc}}</td>
-                                     <td><button class="vote-btn">{{$row_today->audit}}</button></td>
-                                     <td><button class="vote-btn">{{$row_today->kyc}}</button></td>
+                                     <td class="mobile-hide">{{$row_today->cmc}}</td>
+                                     <td class="mobile-hide"><button class="vote-btn">{{$row_today->audit}}</button></td>
+                                     <td class="mobile-hide"><button class="vote-btn">{{$row_today->kyc}}</button></td>
                                     @if(Auth::user())
                                         @php
     
@@ -172,9 +172,9 @@ Topgainer
                                         @endif
                                          {{--devote start--}}
                                          @if($check==0)
-                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                         @else
-                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
+                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" un_devote="{{$row_today->id}}" type="button"><span>{{$row_today->devote}}</span></button></td>
                                         @endif    
                                     @else
                                         @php
@@ -193,9 +193,9 @@ Topgainer
                                         @endif
                                          {{--devote start--}}
                                          @if($ses_check==0)
-                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
+                                            <td style="text-align:center;" class="devote{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-12" devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
                                         @else
-                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
+                                            <td style="text-align:center;" class="un_devote{{$row_today->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-12" un_devote="{{$row_today->id}}">{{$row_today->devote}}</button></td>
                                         @endif    
                                     @endif
                                    
@@ -209,7 +209,7 @@ Topgainer
                                 @endif
                             </tbody>
                     </table>
-                </div>
+                
           </div>
           <script type="text/javascript">
             $(document).on("click" ,'.set5', function(){
@@ -258,7 +258,7 @@ Topgainer
                         $('.devote'+ids).empty();
 
                     var d =" ";
-                    d+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
+                    d+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
                     $('.devote'+ids).append(d);
                     //alert('vote ='+data.devote);
                     }
@@ -327,7 +327,7 @@ Topgainer
 
                     $('.devote'+ids).empty();
                     var op =" ";
-                    op+='<button class="btn btn-sm sbn btn-danger un_devote col-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
+                    op+='<button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" type="button" un_devote='+data.id+'>'+data.dat+'</button>';
                     $('.devote'+ids).append(op);
                     if(data.dat > 0)
                     {
@@ -367,7 +367,7 @@ Topgainer
                 success: function (data) {
                     $('.devote'+ids).empty();
                     var op1 =" ";
-                    op1+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.dat+'</button>';
+                    op1+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.dat+'</button>';
                     $('.devote'+ids).append(op1);
 
 
