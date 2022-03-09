@@ -28,8 +28,12 @@ Add Coin
 		border: 1px solid #e2ab10;
 		color: white;
 		margin-bottom: 3%;
-		
 	}
+    @media screen and (max-width:768px){
+        .bty{
+		width: 100%;
+	}
+    }
 	.bty a{
 		color: white;
 		
@@ -43,18 +47,17 @@ Add Coin
 		height: 4.5rem;
 	    width: 19rem;
 	    font-size: 2.8rem;
-	    color: #28a745;
+	    color: #fff;
 	    border: 1px solid #28a745;
 	    border-radius: .5rem;
 	    margin-bottom:5%;
 	    margin-top: 5%;
 	    text-align:center;
 
-
 	}
 	.per_out_sbn:hover{
-		background-color: #28a745;
-		border: 2px solid #28a745;
+
+        border: 1px solid #28a745;
 	}
 
 
@@ -74,9 +77,7 @@ Add Coin
 	}
 
 	.sbn:hover{
-		background-color:#28a745;
-		border: 1px solid #28a745;
-		color: white;
+		
 		
 	}
 	.container-fluid{
@@ -91,11 +92,7 @@ Add Coin
  .marv{margin-left:0%!important;margin-right: 0%!important;}   
 
 .per_out_sbn{
-		
 	    width: 10rem!important;
-	   
-
-
 	}
 	.per_sbn{
 		
@@ -175,16 +172,13 @@ Add Coin
 @foreach($coin as $row)
 <div class="container-fluid mt-3">
 	<div class="row marv ml-1 mb-4 mr-1">
-		<div class="col-md-8 mb-3">
-            
-                <div class="row mt-3">
-                    <div class="col-md-2">
-                        <img src="{{$row->logo_link}}" alt="Logo" style="height: 100px; width: 100px; margin-right: 5px;">
+		<div class="col-lg-8 col-12 mb-3">
+                <div class="row mt-3 justify-content-center">
+                    <div class="col-lg-2 col-md-3 col-5">
+                        <img src="{{$row->logo_link}}" alt="Logo" style="height: 100px; width: 100px; margin-right: 5px;" class="mx-auto">
                     </div>
-                    <div class="col-md-10">
-                        <h3 style="font-size:1.75rem;color:white;margin-top:2%;">{{$row->name}}</h3>
-                        
-
+                    <div class="col-lg-10 col-md-7 text-center">
+                        <h3 style="font-size:1.75rem;color:white;margin-top:2%;" class="text-center">{{$row->name}}</h3>
                         <span class="mx-2 mt-2" style="background-color: rgb(148, 136, 240);
                                     height: 2.6rem;
                                     line-height: 2.6rem;
@@ -221,22 +215,15 @@ Add Coin
                 </div>
             
 			<h4 class="mt-4" style="color:white;">Contracts:</h4>
-			<div class="input-group mb-3">
-			 
-			 
-			  
+			<div class="input-group mb-3"> 
 			  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" value="{{$row->address}}" style="cursor: pointer;color: white;height: 38px;background-color: #181d23;margin-top: 12px;" id="myInput" readonly="" >
-			  
-			
 			  <div class="input-group-append">
 			    <span class="input-group-text" onclick="myFunction()" style="color: white;background-color: #181d23;height: 38px;margin-top: 12px;">copy</span>
 			  </div>
 			</div>
 			<p style="color:#a1a5aa;">{{$row->des}}</p>
 		</div>
-		<div class="col-md-4 mt-4" >
-
-			
+		<div class="col-lg-4 col-12 mt-4" >
 			<h6 style="font-weight:normal;color:white;">Price</h6>
 			<h6 style="font-size:1.45rem;font-weight:normal;color:white;">${{$row->act_price}}</h6>
 			<h6 style="font-weight:normal;margin-top:4%;color:white;">Market Cap</h6>
@@ -275,9 +262,7 @@ Add Coin
 						@endif
 		</div>
 		<div class="col-md-6 col-6 offset-3">
-
 		@if(Auth::user())
-
             @php
              if(Auth::user())
 			 {
@@ -286,18 +271,14 @@ Add Coin
 			 else{
 			 $us=0;
 			 }
-
-            
               $check=DB::select("select * from coin_votes where coin_id=$row->id or user_id=$us");
-              
               $check=count($check);
-          
             @endphp
 
                 @if($check==0)
-                <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-sm btn-outline-primary per_vo1" abc="{{$row->id}}" type="button" fl>🚀<span>{{$row->vote}}</span></button></a></span>
+                <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-sm btn-outline-success per_vo1" abc="{{$row->id}}" type="button" fl>🚀<span>{{$row->vote}}</span></button></a></span>
                 @else
-                <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-primary per_un_vo1" abc="{{$row->id}}" type="button">🚀<span>{{$row->vote}}</span></button></span>
+                <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-success per_un_vo1" abc="{{$row->id}}" type="button">🚀<span>{{$row->vote}}</span></button></span>
                 @endif 
             @else
                 @php
@@ -318,9 +299,9 @@ Add Coin
                 @endphp
                 @if($ses_check==0)
                 
-                   <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-sm btn-outline-primary per_vo1" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></a></span>
+                   <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-outline-success btn-sm  per_vo1" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></a></span>
                 @else
-                     <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-primary per_un_vo1" abc="{{$row->id}}" type="button"></i><span>{{$row->vote}}</span></button></span>
+                     <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-success per_un_vo1" abc="{{$row->id}}" type="button"></i><span>{{$row->vote}}</span></button></span>
                    
                 @endif   
 
@@ -473,7 +454,7 @@ Add Coin
            //$get_ip=DB::select("select * from ip_adds where ((created_at='$dt') and  ((user_id=$us)  or (user_id=$get_ses)))");
 
         @endphp
-  <div class="table-responsive">
+
       <table class="w-100 mytable mt-5" id="promoted_1">    
           <tr class="table-heading">
               <td>Promoted</td>
@@ -486,9 +467,10 @@ Add Coin
                   <th >Symbol</th>
                   <th>Price</th>
                   <th>Launch</th>
-                  <th>CMC | CG</th>
-                  <th>Audit</th>
-                  <th>KYC</th>
+                  <th class="mobile-hide">CMC | CG</th>
+                  <th class="mobile-hide">Audit</th>
+                  <th class="mobile-hide">KYC</th>
+                  <th>vote</th>
                   <th>upvote</th>
                   <th>more</th>
               </tr>
@@ -524,12 +506,12 @@ Add Coin
                   @elseif($row_per->launch_date==$dt)
                       <td> Launch Today</td>
                   @else
-                      <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">Launch in {{$diff_row_per}} days</a></td>
+                      <td ><a href="{{url('coins', ['id'=>$row_per->id])}}">{{$diff_row_per}} days</a></td>
 
                   @endif
-                  <td>{{$row_per->cmc}}</td>
-                  <td><button class="vote-btn">{{$row_per->audit}}</button></td>
-                  <td><button class="vote-btn">{{$row_per->kyc}}</button></td>
+                  <td class="mobile-hide">{{$row_per->cmc}}</td>
+                  <td class="mobile-hide"><button class="vote-btn">{{$row_per->audit}}</button></td>
+                  <td class="mobile-hide"><button class="vote-btn">{{$row_per->kyc}}</button></td>
                   @if(Auth::user())
                       @php
 
@@ -547,9 +529,9 @@ Add Coin
                       @endif
                        {{--devote start--}}
                        @if($check==0)
-                          <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
+                          <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-md-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
                       @else
-                          <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
+                          <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-md-6" un_devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
                       @endif    
                   @else
                       @php
@@ -562,9 +544,9 @@ Add Coin
                       @endif
                        {{--devote start--}}
                        @if($check==0)
-                          <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
+                          <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-md-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
                       @else
-                          <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-6" un_devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
+                          <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-md-6" un_devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
                       @endif    
                   @endif
                  
@@ -575,9 +557,6 @@ Add Coin
               
           </tbody>
       </table>
-          
-          
-  </div>
 
           @if($xyz==10)
           <div style="width: 100%;text-align: center;"><button class="sbn btn btn-sm btn-outline-primary set5" style="width:40%;margin-right: 0;margin-left: 0;">See All</button>
