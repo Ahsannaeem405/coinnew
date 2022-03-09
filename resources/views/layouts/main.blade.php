@@ -282,19 +282,17 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="?" method="POST">
-                <div id="html_element"></div>
-                <br>
-                <input type="submit" value="Submit">
-              </form>
+            <div class="d-flex justify-content-center">
+                <form action="?" method="POST">
+                    <div id="html_element"></div>
+                   
+                  </form>
+            </div>
               <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
                   async defer>
               </script>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+ 
       </div>
     </div>
   </div>
@@ -348,7 +346,7 @@
           grecaptcha.render('html_element', {
             'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b'
           });
-          $('#reportmsg').modal('hide');
+       
         };
       </script>
     <script type="text/javascript">
