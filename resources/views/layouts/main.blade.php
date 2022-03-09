@@ -342,13 +342,17 @@
 
 
     <script type="text/javascript">
-        var onloadCallback = function(response) {
+        var onloadCallback = function() {
           grecaptcha.render('html_element', {
-            'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b'
+            'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b',
+            'callback' : correctCaptcha
           });
-          alert(response);
        
         };
+
+        var correctCaptcha = function(response) {
+    alert(response);
+};
       </script>
     <script type="text/javascript">
     
