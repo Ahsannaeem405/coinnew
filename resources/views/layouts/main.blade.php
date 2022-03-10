@@ -296,30 +296,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="unvote" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="d-flex justify-content-center">
-                <form action="?" method="POST">
-                    <div id="html_element1"></div>
-                   
-                  </form>
-            </div>
-              <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-                  async defer>
-              </script>
-        </div>
- 
-      </div>
-    </div>
-  </div>
+
 
         <!-- Optional JavaScript _____________________________  -->
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -403,38 +380,6 @@
             };
       </script>
 
-<script type="text/javascript">
-    var onloadCallback = function() {
-      grecaptcha.render('html_element1', {
-        'sitekey' : '6LekpsYeAAAAAFU1m5oz7lYG-hOvQMcHm2xxH02b',
-        'callback' : correctCaptcha
-      });
-   
-    };
-
-    var correctCaptcha = function(response) {
-        $('#unvote').modal('hide');
-        var ids=$('.un_vo1').attr('abc');
-                alert(ids);
-
-                $.ajax({
-                    type: 'get',
-                    url:"{{ url('/un_vote') }}",
-
-                    data: {'id':ids},
-
-                    success: function (data) {
-                        
-                        $('.vo1'+ids).empty();
-                        var op =" ";
-                        op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
-                        $('.vo1'+ids).append(op);
-                   
-
-                    },
-                });
-        };
-  </script>
     <script type="text/javascript">
     
         $(document).ready(function(){
@@ -465,7 +410,25 @@
                 $('#unvote').modal('show');
             if(set>=30)
             {
-              
+                var ids=$(this).attr('abc');
+                alert(ids);
+
+                $.ajax({
+                    type: 'get',
+                    url:"{{ url('/un_vote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                        
+                        $('.vo1'+ids).empty();
+                        var op =" ";
+                        op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+                        $('.vo1'+ids).append(op);
+                   
+
+                    },
+                });
                 set=0;
             }
             else{
