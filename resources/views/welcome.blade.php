@@ -360,7 +360,7 @@ if it's not present, don't show loader */
                     $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
 
                     $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
-                    //dd( $time,$start_date,$start_time,$end_date);
+                    dd( $time,$start_date,$start_time,$end_date);
                     $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
                     $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
                     $to = Carbon\Carbon::now();
