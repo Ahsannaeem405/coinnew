@@ -351,9 +351,8 @@
         };
 
         var correctCaptcha = function(response) {
-            alert(123);
             $('#reportmsg').modal('hide');
-            var ids=$(this).attr('abc');
+            var ids=$('.vo1').attr('abc');
                 alert(ids);
 
                 $.ajax({
