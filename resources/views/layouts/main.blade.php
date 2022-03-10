@@ -415,8 +415,8 @@
                 $('#reportmsg').modal('show');
                 var ids=$(this).attr('abc');
                 $('.vote').val(ids);
-            // if(set>=30)
-            // {
+             if(set>=30)
+             {
             //     var ids=$(this).attr('abc');
             //     $.ajax({
             //         type: 'get',
@@ -435,7 +435,7 @@
             //         },
             //     });
             //     set=0;
-            // }
+             }
             else{
                 alert('You Have To wait for 30s for next vote');
             }
