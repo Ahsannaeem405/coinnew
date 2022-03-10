@@ -365,14 +365,14 @@
                         $('.vo1'+ids).empty();
                         var op =" ";
                  
-                        op+='<button class="btn btn-sm sbn btn-primary un_vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+                        op+='<button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" type="button" abc='+data.id+'>'+data.dat+'</button>';
                         $('.vo1'+ids).append(op);
                         if(data.dat > 0)
                         {
                             $('.devote'+ids).empty();
 
                         var d =" ";
-                        d+='<button class="btn btn-sm sbn btn-outline-danger devote col-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
+                        d+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
                         $('.devote'+ids).append(d);
                         //alert('vote ='+data.devote);
                         }
