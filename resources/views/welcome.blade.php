@@ -346,80 +346,54 @@ if it's not present, don't show loader */
                               
                                
                                    
-                $c_date=date('Y-m-d'); 
-                if(isset($check[0]))
-                {
-                    $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
-                    $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
-                    $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
-                    $time=explode(':',$start_time);
-                    $hours=$time[0];
-                    $mint=$time[1];
-                    $seconds=$time[2];
-                
-                    $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
+                                        $c_date=date('Y-m-d'); 
+                                        if(isset($check[0]))
+                                        {
+                                            $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
+                                            $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
+                                            $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
+                                            $time=explode(':',$start_time);
+                                            $hours=$time[0];
+                                            $mint=$time[1];
+                                            $seconds=$time[2];
+                                        
+                                            $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
 
-                    $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
-                    // dd( $time,$start_date,$start_time,$end_date);
-                    $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
-                    $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
-                    $to = Carbon\Carbon::now();
-                    $time=Carbon\Carbon::create($to)->between($first, $second);
-                    dd($time);
-                }else{
-                    $time=false;
-                }
-               
-            //    dd($time);
-            //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
-                @endphp
-                @if($time)
-                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger  col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                                            $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
+                                            // dd( $time,$start_date,$start_time,$end_date);
+                                            $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
+                                            $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
+                                            $to = Carbon\Carbon::now();
+                                            $time=Carbon\Carbon::create($to)->between($first, $second);
+                                            dd($time);
+                                        }else{
+                                            $time=false;
+                                        }
+                                    
+                                    //    dd($time);
+                                    //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
+                                        @endphp
+                                        @if($time)
+                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger  col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
 
-                  @else 
-                                @if($check==0)
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
-                                    @else
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
-                                    @endif
-                                @endif
+                                        @else 
+                                            @if($check==0)
+                                                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
+                                            @else
+                                                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                                            @endif
+                                        @endif
            
-      @php
-           //dd( $end_time,$startDate);
-        $check=count($check);
+                                @php
+                                    //dd( $end_time,$startDate);
+                                    $check=count($check);
 
-          @endphp
-                                   {{----------------------}}
+                                    @endphp
                                    
-
-
-
-
-{{--
-
-                                    @if($check==0)
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
-                                    @else
-                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
-                                    @endif
-            --}}
-
-
-
-
-
-
-                                     {{--devote start
-                                     @if($check==0)
-                                        <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
-                                    @else
-                                        <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" un_devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
-                                    @endif  
-                                    --}}  
                                 @else
                                 @php
                                         $check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
-                                  @endphp
+                                @endphp
 
 
                 @php
