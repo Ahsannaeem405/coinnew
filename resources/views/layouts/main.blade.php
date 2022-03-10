@@ -353,7 +353,7 @@
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
             var ids=$(this).attr('abc');
-                //alert(ids1)
+                alert(ids1)
 
                 $.ajax({
                     type: 'get',
