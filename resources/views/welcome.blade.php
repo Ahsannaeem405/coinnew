@@ -418,7 +418,8 @@ if it's not present, don't show loader */
                                 @else
                                 @php
                                         $check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
-                                     @endphp
+                                  dd($check);
+                                  @endphp
 
 
                 @php
