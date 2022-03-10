@@ -306,7 +306,7 @@ if it's not present, don't show loader */
                         $i=1;
                         @endphp
                             
-                        @foreach($per_coin as $row_per)
+                        @foreach($per_coin[0] as $row_per)
                         @php $xyz++;
                             
                             @endphp
@@ -418,7 +418,6 @@ if it's not present, don't show loader */
                                 @else
                                 @php
                                         $check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
-                                  dd($check);
                                   @endphp
 
 
