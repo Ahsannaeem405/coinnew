@@ -288,6 +288,7 @@
                    
                   </form>
                   <input type="text" class="vote" value="">
+                  <input type="text" class="un_vote" value="">
             </div>
               <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
                   async defer>
@@ -355,6 +356,7 @@
             $('#reportmsg').modal('hide');
             grecaptcha.reset();
             var ids=$('.vote').val();
+            var un_vote=$('.un_vote').val();
          if(ids != ''){
                 $.ajax({
                     type: 'get',
@@ -414,7 +416,7 @@
             $(document).on("click" ,'.un_vo1', function(){
                 $('#reportmsg').modal('show');
                 var ids=$(this).attr('abc');
-                $('.vote').val(ids);
+                $('.un_vote').val(ids);
              if(set>=30)
              {
             //     var ids=$(this).attr('abc');
