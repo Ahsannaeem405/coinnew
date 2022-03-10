@@ -347,6 +347,7 @@ if it's not present, don't show loader */
                                
                                    
                                         $c_date=date('Y-m-d'); 
+                                        dd($check);
                                         if(isset($check[0]))
                                         {
                                             $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
