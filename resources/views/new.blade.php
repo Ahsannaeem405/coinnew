@@ -106,7 +106,7 @@ New
                                 <th>Launch</th>
                                 
                                 <th>Vote</th>
-                                <th>more</th>
+                                <th>More</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -295,9 +295,9 @@ if it's not present, don't show loader */
                             <th>Price</th>
                             <th>Launch</th>
                          
-                            <th>vote</th>
+                            <th>Vote</th>
                             {{-- <th>devote</th> --}}
-                            <th>more</th>
+                            <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -393,13 +393,13 @@ if it's not present, don't show loader */
                         <tr>
                             <th class="">#</th>
                             <th>Name</th>
-                            <th >Symbol</th>
+                            <th>Symbol</th>
                             <th>Price</th>
                             <th>Launch</th>
                      
-                           <th>vote</th>
+                           <th>Vote</th>
                             {{-- <th>devote</th> --}}
-                            <th>more</th>
+                            <th>More</th>
                         </tr>
                         </thead>
                         <tbody >

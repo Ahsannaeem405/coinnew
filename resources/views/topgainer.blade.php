@@ -108,9 +108,9 @@ Topgainer
                                 <th>Price</th>
                                 <th>Launch</th>
                      
-                               <th>vote</th>
+                               <th>Vote</th>
                     
-                                <th>more</th>
+                                <th>More</th>
                             </tr>
                             </thead>
                             <tbody >

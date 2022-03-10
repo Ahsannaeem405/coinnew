@@ -287,8 +287,8 @@
                     <div id="html_element"></div>
                    
                   </form>
-                  <input type="text" class="vote" value="">
-                  <input type="text" class="un_vote" value="">
+                  <input type="hidden" class="vote" value="">
+                  <input type="hidden" class="un_vote" value="">
             </div>
               <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
                   async defer>
@@ -385,7 +385,7 @@
                 });
             }else{
                 var ids=$('.un_vote').val();
-                alert(ids);
+              
                        $.ajax({
 
                     type: 'get',
@@ -399,7 +399,7 @@
                         var op =" ";
                         op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
                         $('.vo1'+ids).append(op);
-                   
+                        $('.un_vote').val('');
 
                     },
                 });

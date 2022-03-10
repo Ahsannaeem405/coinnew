@@ -132,8 +132,8 @@ Promotion
                                 <th>Price</th>
                                 <th>Launch</th>
                            
-                                <th>vote</th>
-                                <th>more</th>
+                                <th>Vote</th>
+                                <th>More</th>
                             </tr>
                         </thead>
                         <tbody>
