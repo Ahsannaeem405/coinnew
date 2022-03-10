@@ -344,7 +344,7 @@ if it's not present, don't show loader */
 
                              
                               
-
+                                dd($check);
                                    
                 $c_date=date('Y-m-d'); 
                 if(isset($check[0]))
