@@ -290,7 +290,7 @@ if it's not present, don't show loader */
                         
                         <tr>
                             <th class="">#</th>
-                            <th>Name</th>
+                            <th>Namessss</th>
                             <th>Symbol</th>
                             <th>Price</th>
                             <th>Launch</th>
