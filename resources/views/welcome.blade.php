@@ -306,7 +306,7 @@ if it's not present, don't show loader */
                         $i=1;
                         @endphp
                             
-                        @foreach($per_coin[0] as $row_per)
+                        @foreach($per_coin as $row_per)
                         @php $xyz++;
                             
                             @endphp
