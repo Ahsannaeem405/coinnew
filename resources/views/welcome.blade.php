@@ -344,7 +344,7 @@ if it's not present, don't show loader */
 
                              
                               
-                                // dd($check);
+                                dd($check);
                                    
                 $c_date=date('Y-m-d'); 
                 if(isset($check[0]))
@@ -418,7 +418,6 @@ if it's not present, don't show loader */
                                 @else
                                 @php
                                         $check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
-                                       // dd(  $check);
                                      @endphp
 
 
@@ -443,13 +442,17 @@ if it's not present, don't show loader */
                     $time=Carbon\Carbon::create($to)->between($first, $second);
                   
                 }else{
+
                     $time=false;
                 }
                 @endphp
                 @if($time)
+                @dd(1)
                 <td style="text-align:center;"><button class="btn btn-sm sbn btn-warning  col-12 col-lg-6" ><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
+                
+
                   @php
                                         $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
                                      @endphp
