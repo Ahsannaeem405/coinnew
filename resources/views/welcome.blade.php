@@ -366,6 +366,7 @@ if it's not present, don't show loader */
                     $to = Carbon\Carbon::now();
                     $time=Carbon\Carbon::create($to)->between($first, $second);
                 }
+                $time=false;
             //    dd($time);
             //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
                 @endphp
@@ -410,9 +411,35 @@ if it's not present, don't show loader */
                                     @endif  
                                     --}}  
                                 @else
+                                @php
+                                        $check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
+                                       // dd(  $check);
+                                     @endphp
 
 
-                                @if($time)
+@php
+                if(isset($check))
+                {
+                    $startDate= date('Y-m-d H:i:s', strtotime($check->created_at));
+                    $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
+                    $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
+                    $time=explode(':',$start_time);
+                    $hours=$time[0];
+                    $mint=$time[1];
+                    $seconds=$time[2];
+                
+                    $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
+
+                    $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
+                    // dd( $time,$start_date,$start_time,$end_date);
+                    $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
+                    $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
+                    $to = Carbon\Carbon::now();
+                    $time=Carbon\Carbon::create($to)->between($first, $second);
+                }
+                $time=false;
+                @endphp
+                @if($time)
                 <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
@@ -420,7 +447,7 @@ if it's not present, don't show loader */
 
              @endif
                                      @php
-                                    //     $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
+                                        $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
                                      @endphp
 
                                  {{--   // @if($ses_check==0)
