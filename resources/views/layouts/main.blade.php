@@ -164,7 +164,9 @@
                             </div>
                             <div class="bsnav-mobile">
                                 <div class="bsnav-mobile-overlay"></div>
-                                <div class="navbar "><ul class="navbar-nav navbar-mobile mr-0">
+                                <div class="navbar " style="
+                                height: 100%;
+                            "><ul class="navbar-nav navbar-mobile mr-0">
                                     <div>
             
                                         <form method="post" action="{{url('/user/searchCoin')}}">
