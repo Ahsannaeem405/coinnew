@@ -365,6 +365,7 @@ if it's not present, don't show loader */
                     $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
                     $to = Carbon\Carbon::now();
                     $time=Carbon\Carbon::create($to)->between($first, $second);
+                    dd($time);
                 }else{
                     $time=false;
                 }
