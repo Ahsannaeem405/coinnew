@@ -377,6 +377,7 @@
                         var d =" ";
                         d+='<button class="btn btn-sm sbn btn-outline-danger devote col-12 col-lg-6" type="button" devote='+data.id+'>'+data.devote+'</button>';
                         $('.devote'+ids).append(d);
+                        $('.vote').val('');
                         //alert('vote ='+data.devote);
                         }
 
