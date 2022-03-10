@@ -371,11 +371,14 @@ if it's not present, don't show loader */
             //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
                 @endphp
                 @if($time)
-                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger  col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
-                  <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
-
+                  @if($check==0)
+                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
+                                    @else
+                                        <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                                    @endif
              @endif
            
       @php
@@ -440,15 +443,19 @@ if it's not present, don't show loader */
                 $time=false;
                 @endphp
                 @if($time)
-                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-warning un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
-                  <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
-
-             @endif
-                                     @php
+                  @php
                                         $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
                                      @endphp
+                  @if($ses_check==0)
+                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
+                                    @else
+                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
+                                     @endif 
+             @endif
+                                    
 
                                  {{--   // @if($ses_check==0)
                                     //     <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
