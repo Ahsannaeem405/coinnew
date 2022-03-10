@@ -412,28 +412,30 @@
             });
        
             $(document).on("click" ,'.un_vo1', function(){
-                
-            if(set>=30)
-            {
+                $('#reportmsg').modal('show');
                 var ids=$(this).attr('abc');
-                $.ajax({
-                    type: 'get',
-                    url:"{{ url('/un_vote') }}",
+                $('.vote').val(ids);
+            // if(set>=30)
+            // {
+            //     var ids=$(this).attr('abc');
+            //     $.ajax({
+            //         type: 'get',
+            //         url:"{{ url('/un_vote') }}",
 
-                    data: {'id':ids},
+            //         data: {'id':ids},
 
-                    success: function (data) {
+            //         success: function (data) {
                         
-                        $('.vo1'+ids).empty();
-                        var op =" ";
-                        op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
-                        $('.vo1'+ids).append(op);
+            //             $('.vo1'+ids).empty();
+            //             var op =" ";
+            //             op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+            //             $('.vo1'+ids).append(op);
                    
 
-                    },
-                });
-                set=0;
-            }
+            //         },
+            //     });
+            //     set=0;
+            // }
             else{
                 alert('You Have To wait for 30s for next vote');
             }
