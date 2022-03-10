@@ -552,7 +552,7 @@ if it's not present, don't show loader */
                                         @endphp
 
                 @php
-             if(isset($check[0]))
+                if(isset($check[0]))
                 {
                     $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
                     $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
@@ -582,9 +582,9 @@ if it's not present, don't show loader */
                         $check=count($check);
                     @endphp
                                     @if($check==0)
-                                        <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></a></td>
+                                        <td style="text-align:center;" class="ddd vo1{{$row_today->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></a></td>
                                     @else
-                                        <td style="text-align:center;" class="vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></td>
+                                        <td style="text-align:center;" class="sss vo1{{$row_today->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_today->id}}" type="button"><span>{{$row_today->vote}}</span></button></td>
                                     @endif
                 @endif
                                      
