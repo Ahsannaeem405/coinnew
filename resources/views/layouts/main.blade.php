@@ -355,7 +355,7 @@
             $('#reportmsg').modal('hide');
             grecaptcha.reset();
             var ids=$('.vote').val();
-         alert( ids);
+         if(ids != ''){
                 $.ajax({
                     type: 'get',
                     url:"{{ url('/vote') }}",
@@ -380,7 +380,10 @@
 
                     },
                 });
-            };
+            }else{
+                alert('unVote');
+            }
+        }
       </script>
 
     <script type="text/javascript">
