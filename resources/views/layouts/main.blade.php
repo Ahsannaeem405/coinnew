@@ -352,6 +352,7 @@
 
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
+            grecaptcha.reset();
             var ids=$('.vo1').attr('abc');
             alert( ids);
                 $.ajax({
