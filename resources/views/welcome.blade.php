@@ -447,11 +447,10 @@ if it's not present, don't show loader */
                 }
                 @endphp
                 @if($time)
-                @dd(1)
                 <td style="text-align:center;"><button class="btn btn-sm sbn btn-warning  col-12 col-lg-6" ><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
-                
+                //
 
                   @php
                                         $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
