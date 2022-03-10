@@ -278,7 +278,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Verify your human</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -424,22 +424,14 @@
                 $('#reportmsg').modal('show');
                 var ids=$(this).attr('abc');
                 $('.vote').val(ids);
-                if(set>=30)
-                {
                
-                set=0;
-            }
-            else{
-                alert('You Have To wait for 30s for next vote');
-            }
             });
        
             $(document).on("click" ,'.un_vo1', function(){
                 $('#reportmsg').modal('show');
                 var ids=$(this).attr('abc');
                 $('.un_vote').val(ids);
-             if(set>=30)
-             {
+            
             //     var ids=$(this).attr('abc');
             //     $.ajax({
             //         type: 'get',
@@ -458,10 +450,7 @@
             //         },
             //     });
             //     set=0;
-             }
-            else{
-                alert('You Have To wait for 30s for next vote');
-            }
+           
             });
 
             $(document).on("click",'.devote' , function(){
