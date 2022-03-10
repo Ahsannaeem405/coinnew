@@ -408,11 +408,9 @@
        
             $(document).on("click" ,'.un_vo1', function(){
                 
-                $('#unvote').modal('show');
             if(set>=30)
             {
                 var ids=$(this).attr('abc');
-X
                 $.ajax({
                     type: 'get',
                     url:"{{ url('/un_vote') }}",
