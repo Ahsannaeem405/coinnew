@@ -303,10 +303,12 @@ if it's not present, don't show loader */
                     <tbody>
                         @php $a=1;
                         $xyz=0;
+                        $i=1;
                         @endphp
+                            
                         @foreach($per_coin as $row_per)
-                            @php $xyz++;
-                                $i=1;
+                        @php $xyz++;
+                            
                             @endphp
                             <tr>
 
