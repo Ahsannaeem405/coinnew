@@ -79,7 +79,7 @@
                                                     <div class="input-group">
                                                     <button type="submit" class="">
                                                         <span class="input-group-text" id="basic-addon1">
-                                                            <i class="fa fa-search" aria-hidden="true"></i>    
+                                                            <i class="fa fa-search text-white" aria-hidden="true"></i>    
                                                         </span>
                                                     </button> 
                                                     <input type="text" name="searchCoin"  class="form-control" placeholder="Seacrh" aria-label="Username" aria-describedby="basic-addon1">
@@ -173,7 +173,7 @@
                                         <div class="input-group-prepend">
                                             <button  type="submit" class="mobile-bar-search">
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="fa fa-search" aria-hidden="true"></i>    
+                                                    <i class="fa fa-search text-white" aria-hidden="true"></i>    
                                                 </span>
                                             </button> 
                                         </div>
