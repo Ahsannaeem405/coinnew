@@ -20,6 +20,7 @@ use App\Models\slider_img;
 use App\Models\ip_add;
 use App\Models\KYC;
 use App\Models\Audit;
+use App\Models\AuditDesc;
 use DB;
 use Session;
 use DateTime;
@@ -703,8 +704,24 @@ class userController extends Controller
      }
 
 
-
-
+public function audit_desc(Request $request)
+{
+   $desc=new AuditDesc();
+   $desc->audit_desc=$request->audit_desc;
+   $desc->buybot_desc=$request->buybot_desc;
+   $desc->kyc_desc=$request->kyc_desc;
+   $desc->save();
+   return back()->with('success', 'Your description successfully added!');
+}
+public function update_audit_desc(Request $request,$id)
+{
+   $desc=AuditDesc::find($id);
+   $desc->audit_desc=$request->audit_desc;
+   $desc->buybot_desc=$request->buybot_desc;
+   $desc->kyc_desc=$request->kyc_desc;
+   $desc->save();
+   return back()->with('success', 'Your description successfully updated!');
+}
 
 
 

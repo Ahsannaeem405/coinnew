@@ -8,8 +8,13 @@ New
         <div class="col-md-10 ">
 			<div class="contact-div p-5">
 				<center>
+                    @php
+                            $sub=App\Models\AuditDesc::first();
+                           // dd( $sub);
+                        @endphp
 					<div class="form-wrapper mt-2">
 							<h2 class="title">My BuyBot Telegram Channel</h2>
+                            <p class="my-2 text-white">{{$sub->buybot_desc}}</p>
                             <a class="tele-card mt-5" href="#">
                                 <img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="channel-img" class="img-fluid">
                                 <div class="card-details">

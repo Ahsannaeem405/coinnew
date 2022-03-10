@@ -118,6 +118,15 @@ Route::prefix('/admins')->middleware(['auth','admin'])->group(function (){
     Route::get('/contact', function () {
         return view('admin.contact1');
     });
+    Route::get('/audits', function () {
+        return view('admin.audits');
+    });
+
+
+    
+    Route::any('/audit_desc',[App\Http\Controllers\userController::class, 'audit_desc']);
+    Route::any('/update_audit_desc/{id}',[App\Http\Controllers\userController::class, 'update_audit_desc']);
+
     Route::any('/permote/{id}',[App\Http\Controllers\userController::class, 'permote']);
     Route::any('/un_permote/{id}',[App\Http\Controllers\userController::class, 'un_permote']);
     Route::any('/update_vote',[App\Http\Controllers\userController::class, 'update_vote']);

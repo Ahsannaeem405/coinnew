@@ -17,10 +17,13 @@ KYC
 			<div class="contact-div p-5">
 				
 				<center>
-					
+					@php
+					$sub=App\Models\AuditDesc::first();
+				   // dd( $sub);
+				@endphp
 					<div class="form-wrapper">
 							<h2 class="title">KYC</h2>
-
+						<p class="my-2 text-white">{{$sub->kyc_desc}}</p>
 							<form method="POST" class="login-form" action="{{ url('user/kyc') }}">
 							@csrf
 								<input type="text" name="name" placeholder="Name" class="theme-input"

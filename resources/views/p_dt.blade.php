@@ -474,11 +474,12 @@ Add Coin
           </thead>
           <tbody>
               @php $a=1;
+                    $i=1;
               $xyz=0;
               @endphp
               @foreach($per_coin as $row_per)
               @php $xyz++;
-                  $i=1;
+            
               @endphp
               <tr>
 

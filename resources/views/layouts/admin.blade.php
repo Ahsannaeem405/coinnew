@@ -187,7 +187,14 @@
                                 <span class="hide-menu">Email</span>
                             </a>
                         </li>
-
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url('admins/audits')}}"
+                                aria-expanded="false">
+                                <i class="fa fa-envelope-square" aria-hidden="true"></i>
+                                <span class="hide-menu">Description</span>
+                            </a>
+                        </li>
+                        
                         <li class="text-center p-20 upgrade-btn">
                             <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
