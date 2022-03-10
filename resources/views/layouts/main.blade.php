@@ -82,7 +82,7 @@
                                                             <i class="fa fa-search" aria-hidden="true"></i>    
                                                         </span>
                                                     </button> 
-                                                    <input type="text" name="searchCoin"  class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    <input type="text" name="searchCoin"  class="form-control" placeholder="Seacrh" aria-label="Username" aria-describedby="basic-addon1">
                                                     </div>
                                                 </form> 
                                             
@@ -287,6 +287,7 @@
                     <div id="html_element"></div>
                    
                   </form>
+                  <input type="text" class="vote" value="">
             </div>
               <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
                   async defer>
@@ -353,8 +354,8 @@
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
             grecaptcha.reset();
-            var ids=$('.vo1').attr('abc');
-            alert( ids);
+            var ids=$('.vote').val();
+         alert( ids);
                 $.ajax({
                     type: 'get',
                     url:"{{ url('/vote') }}",
@@ -395,8 +396,8 @@
 
             $(document).on("click",'.vo1' , function(){
                 $('#reportmsg').modal('show');
-
-                
+                var ids=$(this).attr('abc');
+                $('.vote').val(ids);
                 if(set>=30)
                 {
                
