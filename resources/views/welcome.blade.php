@@ -446,7 +446,7 @@ if it's not present, don't show loader */
                 }
                 @endphp
                 @if($time)
-                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-warning un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                <td style="text-align:center;"><button class="btn btn-sm sbn btn-warning  col-12 col-lg-6" ><span>{{$row_per->vote}}</span></button></td>
 
                   @else 
                   @php
