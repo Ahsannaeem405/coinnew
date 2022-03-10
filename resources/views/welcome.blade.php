@@ -344,7 +344,7 @@ if it's not present, don't show loader */
 
                              
                               
-                                dd($check);
+                                // dd($check);
                                    
                 $c_date=date('Y-m-d'); 
                 if(isset($check[0]))
@@ -360,13 +360,13 @@ if it's not present, don't show loader */
                     $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
 
                     $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
-                    dd( $time,$start_date,$start_time,$end_date);
+                    // dd( $time,$start_date,$start_time,$end_date);
                     $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
                     $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
                     $to = Carbon\Carbon::now();
                     $time=Carbon\Carbon::create($to)->between($first, $second);
                 }
-               dd($time);
+            //    dd($time);
             //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
                 @endphp
                 @if($time)
@@ -388,13 +388,20 @@ if it's not present, don't show loader */
 
 
 
-
+{{--
 
                                     @if($check==0)
                                         <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
                                     @else
                                         <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
                                     @endif
+            --}}
+
+
+
+
+
+
                                      {{--devote start
                                      @if($check==0)
                                         <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
@@ -403,14 +410,24 @@ if it's not present, don't show loader */
                                     @endif  
                                     --}}  
                                 @else
-                                    @php
-                                        $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
-                                    @endphp
-                                    @if($ses_check==0)
-                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
-                                    @else
-                                        <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
-                                    @endif
+
+
+                                @if($time)
+                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+
+                  @else 
+                  <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
+
+             @endif
+                                     @php
+                                    //     $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
+                                     @endphp
+
+                                 {{--   // @if($ses_check==0)
+                                    //     <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
+                                    // @else
+                                    //     <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
+                                    // @endif   --}}   
                                      {{--devote start
                                      @if($check==0)
                                         <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
