@@ -312,7 +312,7 @@ if it's not present, don't show loader */
                             @endphp
                             <tr>
 
-                                <td>{{ $i++}}</td>
+                                <td>{{ $row_per->id}}</td>
                                 <td >
                                    
                                          <a href="{{url('coins', ['id'=>$row_per->id])}}" class="name py-2"><img src="{{$row_per->logo_link}}" class="">{{$row_per->name}}</a>
