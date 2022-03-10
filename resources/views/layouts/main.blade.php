@@ -353,6 +353,7 @@
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
             var ids=$('.vo1').attr('abc');
+            alert( ids);
                 $.ajax({
                     type: 'get',
                     url:"{{ url('/vote') }}",
@@ -411,8 +412,7 @@
             if(set>=30)
             {
                 var ids=$(this).attr('abc');
-                alert(ids);
-
+X
                 $.ajax({
                     type: 'get',
                     url:"{{ url('/un_vote') }}",
