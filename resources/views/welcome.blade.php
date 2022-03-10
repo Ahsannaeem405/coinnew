@@ -423,9 +423,9 @@ if it's not present, don't show loader */
 
 
                 @php
-                if(isset($check))
+                if(isset($check[0]))
                 {
-                    $startDate= date('Y-m-d H:i:s', strtotime($check->created_at));
+                    $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
                     $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
                     $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
                     $time=explode(':',$start_time);
@@ -552,9 +552,9 @@ if it's not present, don't show loader */
                                         @endphp
 
                 @php
-                if(isset($check))
+             if(isset($check[0]))
                 {
-                    $startDate= date('Y-m-d H:i:s', strtotime($check->created_at));
+                    $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
                     $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
                     $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
                     $time=explode(':',$start_time);
@@ -605,9 +605,9 @@ if it's not present, don't show loader */
 
 
 @php
-                if(isset($check))
+            if(isset($check[0]))
                 {
-                    $startDate= date('Y-m-d H:i:s', strtotime($check->created_at));
+                    $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
                     $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
                     $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
                     $time=explode(':',$start_time);
