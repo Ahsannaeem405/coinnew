@@ -351,9 +351,10 @@
         };
 
         var correctCaptcha = function(response) {
+            alert(123);
             $('#reportmsg').modal('hide');
             var ids=$(this).attr('abc');
-                alert(ids1)
+                alert(ids);
 
                 $.ajax({
                     type: 'get',
