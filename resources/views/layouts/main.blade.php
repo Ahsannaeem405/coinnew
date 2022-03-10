@@ -356,7 +356,7 @@
             $('#reportmsg').modal('hide');
             grecaptcha.reset();
             var ids=$('.vote').val();
-            var un_vote=$('.un_vote').val();
+     
          if(ids != ''){
                 $.ajax({
                     type: 'get',
@@ -384,7 +384,25 @@
                     },
                 });
             }else{
-                alert('unVote');
+                var ids=$('.un_vote').val();
+                alert(ids);
+                       $.ajax({
+
+                    type: 'get',
+                    url:"{{ url('/un_vote') }}",
+
+                    data: {'id':ids},
+
+                    success: function (data) {
+                        
+                        $('.vo1'+ids).empty();
+                        var op =" ";
+                        op+='<button class="btn btn-sm sbn btn-outline-primary vo1" type="button" abc='+data.id+'>'+data.dat+'</button>';
+                        $('.vo1'+ids).append(op);
+                   
+
+                    },
+                });
             }
         }
       </script>
