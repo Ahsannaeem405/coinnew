@@ -93,14 +93,15 @@ class userController extends Controller
 
     public function vote(Request $request)
     {
-       $id=$request->id;
+       $id=intval($request->id);
 
        $get_vote=add_coin::where('id',$id)->value('vote');
        
        $get_vote_val=add_coin::where('id',$id)->value('devote');
-
-       $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->first();
-      dd( $userVote,Auth::user()->id, $id);   
+      // $user_id=Auth::user()->id;
+      // // dd(  $user_id);
+      //  $userVote=coin_vote::where('user_id',$user_id)->where('coin_id', $id)->first();
+      // dd( $userVote,$user_id, $id);   
        $userVote=coin_vote::where('user_id', Session::get('id'))->where('coin_id', $id)->sum('devote');
        $data=add_coin::find($id);
       // dd($userVote);

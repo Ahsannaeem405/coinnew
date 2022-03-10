@@ -340,10 +340,55 @@ if it's not present, don't show loader */
                                 @if(Auth::user())
                                     @php
                                         $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
+                                        //$check_user=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$us)->orwhere('user_id',$get_ses)->get();
 
-                                        $check=count($check);
+                             
+                              
 
-                                    @endphp
+                                   
+                $c_date=date('Y-m-d'); 
+                if(isset($check[0]))
+                {
+                    $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
+                    $start_date=Carbon\Carbon::parse($startDate)->format('Y-m-d');
+                    $start_time=Carbon\Carbon::parse($startDate)->format('H:i:s');
+                    $time=explode(':',$start_time);
+                    $hours=$time[0];
+                    $mint=$time[1];
+                    $seconds=$time[2];
+                
+                    $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
+
+                    $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
+                    //dd( $time,$start_date,$start_time,$end_date);
+                    $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
+                    $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
+                    $to = Carbon\Carbon::now();
+                    $time=Carbon\Carbon::create($to)->between($first, $second);
+                }
+               //dd($time);
+            //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
+                @endphp
+                @if($time)
+                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+
+                  @else 
+                  <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
+
+             @endif
+           
+      @php
+           //dd( $end_time,$startDate);
+        $check=count($check);
+
+          @endphp
+                                   {{----------------------}}
+                                   
+
+
+
+
+
 
                                     @if($check==0)
                                         <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
