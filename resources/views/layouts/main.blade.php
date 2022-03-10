@@ -352,26 +352,7 @@
 
         var correctCaptcha = function(response) {
             $('#reportmsg').modal('hide');
-            };
-      </script>
-    <script type="text/javascript">
-    
-        $(document).ready(function(){
-            var set=30;
-
-                setInterval(function(){
-                    set+=1;
-
-                   
-                }, 1000);
-
-            $(document).on("click",'.vo1' , function(){
-                $('#reportmsg').modal('show');
-
-                
-                if(set>=30)
-                {
-                var ids=$(this).attr('abc');
+            var ids=$(this).attr('abc');
                 //alert(ids1)
 
                 $.ajax({
@@ -398,6 +379,26 @@
 
                     },
                 });
+            };
+      </script>
+    <script type="text/javascript">
+    
+        $(document).ready(function(){
+            var set=30;
+
+                setInterval(function(){
+                    set+=1;
+
+                   
+                }, 1000);
+
+            $(document).on("click",'.vo1' , function(){
+                $('#reportmsg').modal('show');
+
+                
+                if(set>=30)
+                {
+               
                 set=0;
             }
             else{
