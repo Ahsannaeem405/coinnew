@@ -104,9 +104,7 @@ Token
                                 <th>Symbol</th>
                                 <th>Price</th>
                                 <th>Launch</th>
-                      
-                                <th>Vote</th>
-              
+                                <th>Vote</th> 
                                 <th>More</th>
                             </tr>
                         </thead>
@@ -147,49 +145,32 @@ Token
                             @endif
                      
                             @if(Auth::user())
-                                @php
-
-
-                                    $check=DB::select("select * from coin_votes where ((coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
-
-                                    $check=count($check);
-
-                                @endphp
-
-                                @if($check==0)
-                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1  col-12 col-lg-6" abc="{{$row_per->id}}" type="button">🚀<span>{{$row_per->vote}}</span></button></a></td>
-                                @else
-                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1  col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
-                                @endif
-                                 {{--devote start--}}
-                                 @if($check==0)
-                                    <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_per->id}}" type="button"><span>{{$row_per->devote}}</span></button></td>
-                                @else
-                                    <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" un_devote="{{$row_per->id}}" type="button">🚀<span>{{$row_per->devote}}</span></button></td>
-                                @endif    
+                            @php
+                                $check=DB::select("select * from coin_votes where ( (created_at >= NOW() - INTERVAL 1 DAY ) and (coin_id=$row_per->id) and ((user_id=$us) or (user_id=$get_ses)))");
+                            @endphp
+                                
+                            @if(count($check)==0)
+                                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
                             @else
-                                @php
-
-
-                                    $ses_check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->count();
-
-
-                                @endphp
-                                @if($ses_check==0)
-
-                                    <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}">{{$row_per->vote}}</button></a></td>
-                                @else
-                                    <td style="text-align: center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6"  abc="{{$row_per->id}}">{{$row_per->vote}}</button></td>
-
-                                @endif
-                                 {{--devote start
-                                 @if($ses_check==0)
-                                    <td style="text-align:center;" class="devote{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-danger devote  col-12 col-lg-6" devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
-                                @else
-                                    <td style="text-align:center;" class="un_devote{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger un_devote col-12 col-lg-6" un_devote="{{$row_per->id}}">{{$row_per->devote}}</button></td>
-                                @endif   
-                                --}} 
+                                <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
                             @endif
+                 
+                           
+                        @else
+                              @php
+                                 $check=DB::select("select * from coin_votes where ( (created_at >= NOW() - INTERVAL 1 DAY ) and (coin_id=$row_per->id) and ((user_id=$get_ses)))");
+
+                                //$check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
+                            @endphp
+                            
+                            @if(count($check)==0)
+                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></a></td>
+                            @else
+                                    <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
+                            @endif
+            
+                        @endif
+                       
                            
                             <td>  <a href="{{url('coins', ['id'=>$row_per->id])}}">Info</a></td>
                         </tr>
