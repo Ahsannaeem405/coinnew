@@ -347,7 +347,7 @@ if it's not present, don't show loader */
                                
                                    
                                         $c_date=date('Y-m-d'); 
-                                        dd($check);
+                            
                                         if(isset($check[0]))
                                         {
                                             $startDate= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
@@ -361,21 +361,30 @@ if it's not present, don't show loader */
                                             $end_time=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d H:i:s');
 
                                             $end_date=Carbon\Carbon::parse($startDate)->addHour(24)->format('Y-m-d');
-                                            // dd( $time,$start_date,$start_time,$end_date);
+                                            //dd( $time,$start_date,$start_time,$end_date);
                                             $first = Carbon\Carbon::create($startDate, $hours,$mint, $seconds);
                                             $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
                                             $to = Carbon\Carbon::now();
                                             $time=Carbon\Carbon::create($to)->between($first, $second);
-                                            dd($time);
-                                        }else{
-                                            $time=false;
-                                            dd($time);
-                                        }
+                                            $dayte=date('Y-m-d');
+                                            $dayte_time=date('H:i:s');
+                                            
+                                            $pre_date= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
+                                            $pre_time= date('H:i:s', strtotime($check[0]->created_at));
+                                            // if($pre_date < $dayte and $pre_time < $dayte_time)
+                                        //     {
+                                        //         dd($dayte);
+                                        //     }
+                                        //     dd($time,'if',$to);
+                                         }else{
+                                             $time=false;
+                                        //     dd($time,'else');
+                                         }
                                     
                                     //    dd($time);
                                     //   dd(Carbon\Carbon::create($to)->between($first, $second), $start_date, $end_date);
                                         @endphp
-                                        @if($time)
+                                        @if($pre_date < $dayte and $pre_time < $dayte_time)
                                         <td style="text-align:center;" class="vo1{{$row_per->id}}"><button class="btn btn-sm sbn btn-danger  col-12 col-lg-6" abc="{{$row_per->id}}" type="button"><span>{{$row_per->vote}}</span></button></td>
 
                                         @else 
