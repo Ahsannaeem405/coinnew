@@ -276,9 +276,15 @@
   <!-- Modal -->
   <div class="modal fade" id="reportmsg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content mytable " style="
+      padding: 8px;
+      background-color: #464645;
+      border: 8px solid #fecc3c;
+      position: relative;
+      /* color: white; */
+  ">
         <div class="modal-header">
-          <h5 class="modal-title text-dark" id="exampleModalLongTitle">Verify your human</h5>
+          <h5 class="modal-title text-white" id="exampleModalLongTitle">Verify your human</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -662,7 +668,9 @@
     <script>
         $(document).ready(function(){
             
-            
+            $('.close').click(function(){
+                $('#reportmsg').modal('hide');
+            });
 
          
             
