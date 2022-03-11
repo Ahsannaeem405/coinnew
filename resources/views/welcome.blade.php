@@ -555,11 +555,18 @@ if it's not present, don't show loader */
                     $second = Carbon\Carbon::create($end_date, $hours, $mint, $seconds);
                     $to = Carbon\Carbon::now();
                     $time=Carbon\Carbon::create($to)->between($first, $second);
+
+                    $dayte=date('Y-m-d');
+                                            $dayte_time=date('H:i:s');
+                                            
+                                            $pre_date= date('Y-m-d H:i:s', strtotime($check[0]->created_at));
+                                            $pre_time= date('H:i:s', strtotime($check[0]->created_at));
+                                            // if($pre_date < $dayte and $pre_time < $dayte_time)
                 }else{
                     $time=false;
                 }
                 @endphp
-                 @if($time)
+                 @if($pre_date < $dayte and $pre_time < $dayte_time)
                  <td style="text-align:center;"><button class="btn btn-sm sbn btn-warning  col-12 col-lg-6" ><span>{{$row_per->vote}}</span></button></td>
 
                 @else
