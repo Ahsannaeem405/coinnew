@@ -14,6 +14,9 @@ Add Coin
 
 	    
 	}
+	::placeholder{
+		color: #232A32;
+	}
 	h3, h4{
 		color: white;
 	}
@@ -109,15 +112,18 @@ Add Coin
 									    border-radius: 5px;"></textarea> 
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Launch date<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 								<input required="" type="datetime-local" id="formLaunch" class="form-control t1"  name="launch_date">
-								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Image <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+								<label class="form-label" for="formLaunch" style="margin-top:2%;">Image <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 	
-								<input type="file"  class="t1" name="image" required>
+								<input type="file"  class="t1" name="image" required style="color: #232A32">
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Audit <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 	
 								<input type="text"  class="t1" name="audit" required>
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">CoinGecko link <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="text"  class="t1" name="coin_gecko_link" required>
 								
 							
-
+								
 					    	</div>
 
 
@@ -126,7 +132,7 @@ Add Coin
 					   
 					    		<label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Chain<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 							    
-                                <select class="t1" name="address_name" style="color: white;" required>
+                                <select class="t1" name="address_name" required>
                                 	<option>Ethereum</option>
                                 	<option>Solana</option>
                                 	<option>Binance Smart Chain</option>
@@ -135,6 +141,7 @@ Add Coin
                                 	<option>KuCoin Community Chain</option>
                                 	<option>Hashgraph</option>
                                 	<option>Cardano</option>
+                                	<option>Cronos</option>
                                 </select>
                                 <label class="form-label" style="margin-top:3%;color:white;display: block;text-align: left;">Address<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 								    

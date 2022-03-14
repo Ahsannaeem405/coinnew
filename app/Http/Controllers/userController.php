@@ -57,6 +57,7 @@ class userController extends Controller
       $coinSave->cmc= $request->cmc;
       $coinSave->kyc= $request->kyc;
       $coinSave->audit= $request->audit;
+      $coinSave->coin_gecko_link= $request->coin_gecko_link;
 
       if(isset($request->image))
         {

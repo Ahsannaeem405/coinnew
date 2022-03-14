@@ -120,6 +120,15 @@ Add Coin
     @php $images=App\Models\slider_img::take('1')->orderBy('id', 'DESC')->get();
     $images2=App\Models\slider_img::orderBy('id', 'DESC')->get();
  $images3=App\Models\ban_slider_img::orderBy('id', 'DESC')->get();
+ if(Session::has('id'))
+           {
+           $get_ses=Session::get('id');
+
+           }
+           else{
+            $get_ses=0;
+
+           }
     @endphp
     @if(Session::has('success'))
         <div class="alert alert-success" style="width:100%;">
@@ -128,6 +137,7 @@ Add Coin
                 Session::forget('success');
             @endphp
         </div>
+
     @endif
    
                     <!-- <div class="container-fluid mt-3" style=" padding-left: 8%;
@@ -197,7 +207,7 @@ Add Coin
                                     color: white;
                                 font-weight: 500;
                                 padding: 0px 1rem;
-                                border-radius: 1rem;">Today Votes {{$row->vote}}</span>
+                                border-radius: 1rem;">Votes {{$row->vote}}</span>
                                 <span class="mx-2 mt-2" style="background-color: rgb(35, 42, 50);
 
                                     height: 2.6rem;
@@ -207,7 +217,7 @@ Add Coin
                                     color: white;
                                 font-weight: 500;
                                 padding: 0px 1rem;
-                                border-radius: 1rem;">Votes {{$tod}}</span>
+                                border-radius: 1rem;">Today Votes {{$tod}}</span>
 
 
                         
@@ -260,54 +270,39 @@ Add Coin
 						@if($row->chart!=null)   
 	                        <button class="btn btn-sm bty btn-outline-primary" type="button"><a href="{{$row->chart}}">chart</a></button><br>
 						@endif
+
+                        @if($row->coin_gecko_link!=null)   
+                        <button class="btn btn-sm bty btn-outline-primary" type="button"><a href="{{$row->coin_gecko_link}}">Coin Gecko Link</a></button><br>
+                    @endif
 		</div>
-		<div class="col-md-6 col-6 offset-3">
-		@if(Auth::user())
+		<div class="col-md-6 col-6 offset-3 my-4" >
+
+            @if(Auth::user())
             @php
-             if(Auth::user())
-			 {
-			 $us=Auth::user()->id;
-			 }
-			 else{
-			 $us=0;
-			 }
-              $check=DB::select("select * from coin_votes where coin_id=$row->id or user_id=$us");
-              $check=count($check);
+                $check=DB::select("select * from coin_votes where ( (created_at >= NOW() - INTERVAL 1 DAY ) and (coin_id=$row->id) and ((user_id=$us) or (user_id=$get_ses)))");
             @endphp
-
-                @if($check==0)
-                <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-sm btn-outline-success per_vo1" abc="{{$row->id}}" type="button" fl>🚀<span>{{$row->vote}}</span></button></a></span>
-                @else
-                <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-success per_un_vo1" abc="{{$row->id}}" type="button">🚀<span>{{$row->vote}}</span></button></span>
-                @endif 
-            @else
-                @php
-                if(Session::has('id'))
-                    {
-                    $get_ses=Session::get('id');
-                    
-                    }
-                    else{
-                     $get_ses=0;
-                     
-                    }
-               
-               
-                $ses_check=App\Models\coin_vote::where('coin_id',$row->id)->where('user_id',$get_ses)->count();
-
-               
-                @endphp
-                @if($ses_check==0)
                 
-                   <span  class="per_vo1{{$row->id}}"><button class="per_out_sbn btn btn-outline-success btn-sm  per_vo1" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></a></span>
-                @else
-                     <span  class="per_vo1{{$row->id}}"><button class="btn btn-sm per_sbn btn-success per_un_vo1" abc="{{$row->id}}" type="button"></i><span>{{$row->vote}}</span></button></span>
-                   
-                @endif   
-
-              
-
+            @if(count($check)==0)
+                <td style="text-align:center;" class="vo1{{$row->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></a></td>
+            @else
+                <td style="text-align:center;" class="vo1{{$row->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></td>
             @endif
+ 
+           
+        @else
+              @php
+                 $check=DB::select("select * from coin_votes where ( (created_at >= NOW() - INTERVAL 1 DAY ) and (coin_id=$row->id) and ((user_id=$get_ses)))");
+
+                //$check=App\Models\coin_vote::where('coin_id',$row_per->id)->where('user_id',$get_ses)->first();
+            @endphp
+            
+            @if(count($check)==0)
+                    <td style="text-align:center;" class="vo1{{$row->id}}"><button class="sbn btn btn-sm btn-outline-primary vo1 col-12 col-lg-6" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></a></td>
+            @else
+                    <td style="text-align:center;" class="vo1{{$row->id}}"><button class="btn btn-sm sbn btn-primary un_vo1 col-12 col-lg-6" abc="{{$row->id}}" type="button"><span>{{$row->vote}}</span></button></td>
+            @endif
+
+        @endif
         </div>    
 	</div>
   

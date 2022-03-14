@@ -101,6 +101,10 @@ class AdminController extends Controller
         $data->youtube=$request->youtube;
         $data->insta=$request->insta;
         $data->chart=$request->chart;
+        $data->cmc= $request->cmc;
+        $data->kyc= $request->kyc;
+        $data->audit= $request->audit;
+        $data->coin_gecko_link= $request->coin_gecko_link;
         if(isset($request->image))
          {
          $image=$request->file('image');

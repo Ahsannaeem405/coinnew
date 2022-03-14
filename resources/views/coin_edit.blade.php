@@ -20,6 +20,12 @@ Add Coin
 
 	    
 	}
+	::placeholder{
+		color: #edeef1;
+	}
+	textarea{
+		color: #fff
+	}
 	h3, h4{
 		color: white;
 	}
@@ -102,17 +108,27 @@ Add Coin
 								<textarea rows="7" cols="5" name="other" placeholder="Other links, other blockchain contracts or anything else you would like to add to your coin request"
                                 style=" width: 100%;
 									    background-color: #232A32;
+										color:#fff
 		                                border: 0px solid #232A32;
 									    padding: 0 25px;
 									    border-radius: 5px;">{{$coin->other}}</textarea> 
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Launch date<span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
-								<input type="datetime-local" id="formLaunch" class="form-control t1" value="{{date('m/d/y m:i a',strtotime($coin->launch_date))}}" name="launch_date">
+								<input type="datetime-local" id="formLaunch" class="form-control t1 text-white" value="{{date('m/d/y m:i a',strtotime($coin->launch_date))}}" name="launch_date">
 								<input type="file"  class="t1 mt-3" name="image" required>
 								<img src="{{asset('images')}}/{{$coin->image}}" class="mt-2" width="40" height="40" alt="">
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">Audit <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 	
 								<input type="text"  class="t1" name="audit" value="{{$coin->audit}}" required>
-					    	</div>
+								
+								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">KYC <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+	
+								<input type="text"  class="t1" name="kyc" value="{{$coin->kyc}}"  required>
+							    
+					    		<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">CoinGecko link <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
+								<input type="text"  class="t1" name="coin_gecko_link" value="{{$coin->coin_gecko_link}}" required>
+
+							
+							</div>
 					    	<div class="col-md-6">
 					    		<h4 class="title" style="float: left;">Coin contracts</h4><br><hr>
 					   
@@ -170,11 +186,7 @@ Add Coin
 								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">CMC <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
 	
 								<input type="text"  class="t1" name="cmc" value="{{$coin->cmc}}"  required>
-								<label class="form-label" for="formLaunch" style="margin-top:2%;color:white;">KYC <span style="color: red;font-size:14px;">&nbsp;&nbsp;Required</span></label>
-	
-								<input type="text"  class="t1" name="kyc" value="{{$coin->kyc}}"  required>
-							    
-					    		
+							
 					    	</div>
 					    </div>
 							
