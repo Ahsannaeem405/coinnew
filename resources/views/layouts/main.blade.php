@@ -159,9 +159,7 @@
                                 </div> <!-- /.bsnav -->
                                 <!-- <div id="login-md"><a href="{{url('log_in')}}">Log in</a></div> -->
                             </div>
-                            <div >
-
-                            </div>
+                        
                             <div class="bsnav-mobile">
                                 <div class="bsnav-mobile-overlay"></div>
                                 <div class="navbar " style="
